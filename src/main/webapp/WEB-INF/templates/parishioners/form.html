@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- This template contains the elements of a parishioner form -->
+<div th:fragment="baptism-date">
+	<!-- Baptism Date -->
+	<label for="baptismDate"
+		th:text="#{parishioner_form.label.baptismDate}"
+		th:class="${#fields.hasErrors('baptismDate')}? 'labelError'">Baptism
+		Date: </label> <span class="labelTextError"
+		th:if="${#fields.hasErrors('baptismDate')}"
+		th:text="#{parishioner_form.validation.baptismDate}"></span> <input
+		type="text" class="datePicker"
+		onclick="$(this).datepicker().datepicker('show')" name="baptismDate"
+		value="" id="baptismDate" placeholder="mm/dd/yyyy"
+		autofocus="autofocus" th:field="*{baptismDate}"
+		th:placeholder="#{parishioner_form.placeholder.baptismDate}"
+		th:class="${#fields.hasErrors('baptismDate')}? 'fieldError':'datePicker'" />
+</div>
+<div th:fragment="baptist">
+	<!-- Baptist -->
+	<div class="styled-select" id="baptist-select">
+		<label for="baptist" th:text="#{parishioner_form.label.baptist}"
+			th:class="${#fields.hasErrors('baptist')}? 'labelError'">Baptist:
+		</label> <span class="labelTextError" th:if="${#fields.hasErrors('baptist')}"
+			th:text="#{parishioner_form.validation.baptist}"></span> <input
+			type="text"
+			th:value="${parishioner.baptist}?(${parishioner.baptist.firstName}+' '+${parishioner.baptist.lastName})"
+			id="baptist" autofocus="autofocus" />
+	</div>
+</div>
+<div th:fragment="holy-spirit-baptism">
+	<!-- Holy Spirit Baptism -->
+	<label for="holySpiritBaptism"
+		th:text="#{parishioner_form.label.holySpiritBaptism}"
+		th:class="${#fields.hasErrors('holySpiritBaptism')}? 'labelError'">Holy
+		Spirit Baptism: </label> <span class="labelTextError"
+		th:if="${#fields.hasErrors('holySpiritBaptism')}"
+		th:text="#{parishioner_form.validation.holySpiritBaptism}"></span> <input
+		type="text" class="datePicker" name="holySpiritBaptism" value=""
+		id="holySpiritBaptism" placeholder="mm/dd/yyyy"
+		onclick="$(this).datepicker().datepicker('show')"
+		autofocus="autofocus" th:field="*{holySpiritBaptism}"
+		th:placeholder="#{parishioner_form.placeholder.holySpiritBaptism}"
+		th:class="${#fields.hasErrors('holySpiritBaptism')}? 'fieldError':'datePicker'" />
+</div>
+</html>

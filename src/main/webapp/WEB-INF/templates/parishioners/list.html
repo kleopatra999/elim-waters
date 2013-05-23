@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title th:substituteby="index::title"></title>
+<meta name="description" th:substituteby="index::metaDescription" />
+<meta name="author" th:substituteby="index::metaAuthor"/>
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<div th:include="index::config" />
+<!--#include virtual="filter.html" -->
+<script th:src="@{/js/libs/jquery.dataTables.min.js}"></script>
+<script th:src="@{/js/parishioner/listParishioner.js}"></script>
+<script th:src="@{/js/filter.js}"></script>
+<script th:src="@{/js/parishioner/outcome.js}"></script>
+</head>
+
+<body>
+	<header th:substituteby="index::header">
+    </header>
+    <div id="container">
+		<div id="cover"></div>
+		<section id="filterScreen"></section>
+		<table class="parishioner-data" id="parishioner-data-list">
+            <thead>
+                <tr>
+                    <th>ParisihionerID</th>
+                    <th th:text="#{parishioner_list.theader.count}">Count</th>
+                    <th th:text="#{parishioner_list.theader.firstName}">First Name</th>
+                    <th th:text="#{parishioner_list.theader.lastName}">Last Name</th>
+                    <th th:text="#{parishioner_list.theader.birthDate}">Birth Date</th>
+                    <th class="address" th:text="#{parishioner_list.theader.address}">Address</th>
+                    <th th:text="#{parishioner_list.theader.phone}">Phone</th>
+                    <th th:text="#{parishioner_list.theader.email}">Email</th>
+                    <th th:text="#{parishioner_list.theader.maritalStatus}">Marital Status</th>
+                    <th th:text="#{parishioner_list.theader.studies}">Studies</th>
+                    <th th:text="#{parishioner_list.theader.baptismDate}">Baptism Date</th>
+                    <!--th th:text="#{parishioner_list.theader.action}" colspan="2">Action</th-->
+					<th>Edit</th>
+					<th>Delete</th>
+					<!-- th>Elim</th -->
+                </tr>
+            </thead>
+            <tbody >
+            </tbody>
+        </table>
+        
+    </div>
+	<section id="parishioner_list_buttons">
+        <a class="button btnSmall" href="create.html" th:href="@{'/parishioners/create'}" th:text="#{parishioner_list.button.new}">New</a>
+        <a class="button btnSmall" id="deleteParishioners" th:text="#{parishioner_list.button.delete}">Delete</a>
+        <a class="button btnSmall" id="parishioner-download" th:text="#{parishioner_list.button.download}">Download</a>
+	</section>
+	<footer th:substituteby="index::footer"></footer>
+	<section th:substituteby="index::jbar"></section>
+</body>
+</html>

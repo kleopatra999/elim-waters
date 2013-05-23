@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div id="parishioner-update-form">
+	<form id="update-form" th:object="${parishioner}" class="clearfix"
+		commandName="parishioner" enctype="multipart/form-data" method="post">
+		<fieldset class="hidden" th:fragment="person-id">
+			<!-- Just to send the parishioner Id to Spring MVC controller -->
+			<input class="hidden" type="hidden" name="id" th:field="*{id}" /> <input
+				class="hidden" type="hidden" name="personID" id="parishioner-id"
+				th:field="*{person.id}" /> <input class="hidden"
+				type="hidden" name="baptistID" id="baptist-id"
+				th:field="*{baptist.id}" />
+		</fieldset>
+		<fieldset id="person-details"
+			th:substituteby="parishioners/create :: person-details"></fieldset>
+		<fieldset id="update-buttons">
+			<section id="parishioner_update_form_buttons">
+				<a class="button" id="update-button">Update</a> <a class="button"
+					id="create-button">Add</a> <a class="button" id="cancel-button">Cancel</a>
+			</section>
+		</fieldset>
+	</form>
+</div>
+</html>

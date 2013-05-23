@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title th:fragment="title">Elim</title>
+<meta name="description" content="Elim pentecostal church members" th:fragment="metaDescription"/>
+<meta name="author" content="wilczur" th:fragment="metaAuthor"/>
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<div th:fragment="config">
+	<link rel="stylesheet" href="../../../css/jquery-ui-1.8.19.custom.css" th:href="@{/css/jquery-ui-1.8.19.custom.css}"/>
+	<link rel="stylesheet" href="../../../css/style.css" th:href="@{/css/style.css}"/>
+	<link rel="stylesheet" href="../../../css/glance.css" th:href="@{/css/glance.css}"/>
+
+	<script type="text/javascript" th:fragment="requirejsConfig"> 
+		var require = {
+			appDir: "../",
+			baseUrl: "/elim/js",
+			paths: { 
+				jquery: "require-jquery",
+				dataTables: "data-tables"
+            }
+		};
+	</script> 
+	<script src="../../libs/jquery-1.7.2.min.js" th:src="@{/js/libs/jquery-1.7.2.min.js}"></script>
+	<script src="../../libs/jquery-ui-1.8.19.custom.min.js" th:src="@{/js/libs/jquery-ui-1.8.19.custom.min.js}"></script>
+	<script src="../../libs/modernizr-2.0.6.min.js" th:src="@{/js/libs/modernizr-2.0.6.min.js}"></script>
+	<script src="../../js/requirejs.js" th:src="@{/js/requirejs.js}"></script>
+	
+	<script src="../../js/main.js" th:src="@{/js/main.js}"></script>
+</div>
+</head>
+
+<body>
+<div id="elim_menu">
+			<ul>
+				<li><a href="#">Frunzisului</a>
+					<ul>
+						<li><a href="#">Membrii</a>
+							<ul>
+								<li><a href="http://www.dhtmlgoodies.com">Adauga</a></li>
+								<li><a href="http://www.dhtmlgoodies.com">Afiseaza</a></li>
+							</ul>
+						</li>
+						<li><a href="#"></a>
+							<ul>
+								<li id="initialExpandedMenuItem"><a href="slidedown-menu2.html">Download</a></li>
+								<li><a href="http://www.dhtmlgoodies.com">Demo</a></li>
+
+								<li><a href="#">Is it cross browser?</a>
+									<ul>
+										<li><a href="http://www.dhtmlgoodies.com">yes it is</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a href="#">Window scripts</a>
+							<ul>
+								<li><a href="http://www.dhtmlgoodies.com">Download</a></li>
+								<li><a href="http://www.dhtmlgoodies.com">Demo</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Form widgets</a>
+							<ul>
+								<li><a href="http://www.dhtmlgoodies.com">Download</a></li>
+								<li><a href="http://www.dhtmlgoodies.com">Demo</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li><a href="#">Support</a>
+					<ul>
+						<li><a href="http://www.dhtmlgoodies.com">Phone</a></li>
+						<li><a href="http://www.dhtmlgoodies.com">Email</a></li>
+						<li><a href="http://www.dhtmlgoodies.com">QnA</a></li>
+					</ul>
+				</li>
+				<li><a href="#">History</a>
+					<ul>
+						<li><a href="http://www.dhtmlgoodies.com">1900 - 1940</a></li>
+						<li><a href="http://www.dhtmlgoodies.com">1941 - 1980 </a></li>
+						<li><a href="http://www.dhtmlgoodies.com">1981 - Present time</a></li>
+					</ul>
+				</li>
+				<li><a href="#">The team</a>
+					<ul>
+						<li><a href="#">Person A</a>
+							<ul>
+								<li><a href="#">CV</a>
+									<ul>
+										<li><a href="http://www.dhtmlgoodies.com">Job 1</a></li>
+										<li><a href="http://www.dhtmlgoodies.com">Job 2</a></li>
+										<li><a href="http://www.dhtmlgoodies.com">Job 3</a></li>
+									</ul>
+								</li>
+								<li><a href="http://www.dhtmlgoodies.com">Education</a></li>
+								<li><a href="#">Experience</a>
+									<ul>
+										<li><a href="#">Job 1</a>
+											<ul>
+												<li><a href="http://www.dhtmlgoodies.com">Accomplished this</a></li>
+												<li><a href="http://www.dhtmlgoodies.com">Accomplished that</a></li>
+											</ul>
+										</li>
+										<li><a href="http://www.dhtmlgoodies.com">Job 2</a></li>
+										<li><a href="http://www.dhtmlgoodies.com">Job 3</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a href="http://www.dhtmlgoodies.com">Person B</a></li>
+						<li><a href="http://www.dhtmlgoodies.com">Person C</a></li>
+						<li><a href="http://www.dhtmlgoodies.com">Person D</a></li>
+						<li><a href="http://www.dhtmlgoodies.com">Person E</a></li>
+
+					</ul>
+				</li>
+				<li><a href="#">Locations</a>
+					<ul>
+						<li><a href="http://www.dhtmlgoodies.com">Norway</a></li>
+						<li><a href="http://www.dhtmlgoodies.com">United States</a></li>
+						<li><a href="http://www.dhtmlgoodies.com">United Kingdom</a></li>
+						<li><a href="http://www.dhtmlgoodies.com">Sweden</a></li>
+						<li><a href="http://www.dhtmlgoodies.com">Denmark</a></li>
+						<li><a href="http://www.dhtmlgoodies.com">Finland</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+</body>
+</html>

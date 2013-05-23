@@ -1,0 +1,921 @@
+body {
+	margin: 0 auto;
+	font-size: 13px;
+	line-height: 1.231;
+	font-family: 'Georgiana', Arial, Helvetica, sans-serif;
+	width: 960px;
+	color: #555;
+	background: #271408 url("../images/bodybkg.gif") repeat;
+}
+/* Hx tags */
+body header {
+	padding: 0 0 0 -60;
+	height: 50px;
+}
+
+h1 {
+	font-size: 28px;
+	clear: both;
+	padding: 2px 3px;
+	margin: 3px 0 0 -100px;
+	text-shadow: 2px 2px 2px #000;
+	color: #d6a965;
+}
+
+/*select{
+	position:absolute;
+	bottom:0;
+	float:left;
+	left:0;
+	width:166px;
+	height:26px;
+	line-height:26px;
+	text-indent:10px;
+	background:url(../images/bg_select.gif) no-repeat 0 0;
+	cursor:default;
+	z-index:1;
+}*/
+select {
+	-webkit-appearance: button;
+	-webkit-border-radius: 3px;
+	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+	-webkit-padding-end: 20px;
+	-webkit-padding-start: 2px;
+	-webkit-user-select: none;
+	background-image: url(../images/bg_select.gif),
+		-webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+	background-position: center right;
+	background-repeat: no-repeat;
+	background-size: 220px;
+	border: 1px solid #AAA;
+	color: #555;
+	font-size: inherit;
+	margin: 0;
+	overflow: hidden;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.parishioner-details {
+	float: right;
+	width: 250px;
+}
+
+input[type="text"],input[type="file"],input[type="email"],input[type="url"],input[type="tel"],input[type="date"]
+	{
+	height: 15px;
+	font-size: 12px;
+}
+
+.dataTables_filter.label.input {
+	width: 20px;
+}
+
+#phone {
+	height: 15px;
+}
+
+.person-details {
+	display: inline-block;
+	float: left;
+	width: 240px;
+	font-size: 1em;
+	margin: 0 0 0 10px;
+	padding: 20px;
+	/* curved border radius */
+	-webkit-border-radius: 10px;
+}
+
+#photo-placehoder {
+	display: block;
+	padding: 20px 20px 7px 20px;
+}
+
+#person-photo {
+	max-height: 90px;
+	width: auto; //
+	border: 1px #DDD solid;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border: 1px solid #ddd;
+	/* -- CSS3 - add a drop shadow -- */
+	-webkit-box-shadow: 0px 0 20px #ccc;
+	-moz-box-shadow: 0px 0 20px #ccc;
+	box-shadow: 0px 0 20px #ccc;
+}
+
+#person-photo:hover {
+	max-height: 180px;
+	border: 2px #DDD solid;
+}
+
+#person-fields {
+	float: center;
+	display: block;
+	width: 580px;
+	margin-left: 10px;
+	-webkit-box-orient: horizontal;
+	background: -webkit-gradient(linear, 0% 0%, 0% 40%, from(#EEE), to(#FFF)
+		);
+	background: -moz-linear-gradient(0% 40% 90deg, #FFF, #EEE);
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #ddd;
+	/*background: #d6a965;*/
+	/* -- CSS3 - define rounded corners -- */
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	/* -- CSS3 - add a drop shadow -- */
+	-webkit-box-shadow: 0px 0 50px #ccc;
+	-moz-box-shadow: 0px 0 50px #ccc;
+	box-shadow: 0px 0 50px #ccc;
+}
+
+#person-address {
+	display: inline-block;
+	margin-top: 10px;
+	float: left;
+	width: 250px;
+}
+
+#address {
+	width: 220px;
+	height: 140px;
+}
+
+#update-buttons {
+	margin-left: 10px;
+}
+
+header h1 {
+	float: left;
+}
+/* navigation menu*/
+nav.menu {
+	position: absolute;
+	width: 1040px;
+	background: url("../images/navbg.png");
+	margin: 40px 0 0 -100px;
+	/* curved border radius */
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+nav.menu ul {
+	margin: 0 auto;
+	width: 960px;
+	list-style: none;
+}
+
+.auth-menu {
+	float: right;
+	margin-right: 25px;
+}
+
+.auth-menu a {
+	padding-left: 10px;
+	color: #271408;
+	font-size: 11px;
+	float: left;
+	margin-top: 20px;
+}
+
+nav.menu ul li {
+	float: left;
+}
+
+nav.menu ul li a {
+	display: block;
+	margin-right: 20px;
+	line-height: 44px;
+}
+
+nav.menu ul li a,#parishioner-data_previous,#parishioner-data_next,
+#caregiver-data_previous,#caregiver-data_next {
+	width: 140px;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: #f2ede7;
+}
+
+#parishioner-data_previous,#parishioner-data_next,
+#caregiver-data_previous,#caregiver-data_next{
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+nav.menu ul li a:hover,#parishioner-data_previous:hover,#parishioner-data_next:hover,
+#caregiver-data_previous:hover,#caregiver-data_next:hover
+	{
+	color: #d6a965;
+}
+
+nav.menu ul li a:active {
+	color: #d6a965;
+}
+
+nav.menu ul li a.selected {
+	color: #d6a965;
+}
+
+#parishioner-data-update_wrapper, #caregiver-data-update_wrapper {
+	margin-left: 45px;
+	margin-top: 8px;
+	width: 300px;
+	float: left;
+}
+
+#parishioner-data-update_length,#parishioner-data-list_length,
+#caregiver-data-update_length,#caregiver-data-list_length {
+	display: none;
+}
+
+#parishioner-data-update_filter,
+#caregiver-data-update_filter {
+	height: 27px;
+}
+
+.dataTables_info {
+	float: left;
+	width: 200px;
+}
+
+#parishioner-data-update_info {
+	
+}
+
+.dataTables_paginate.paging_two_button {
+	float: right;
+}
+
+#parishioner-data-update_paginate {
+	
+}
+
+.hidden {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 0px;
+	height: 0px;
+}
+
+#parishioner-update-form, #caregiver-update-form {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	width: 600px;
+	float: left;
+}
+
+#parishioner-update-form  #person-fields, #caregiver-update-form  #person-fields {
+	float: left;
+}
+
+section#parishioner_update_form_buttons {
+	float: left;
+}
+
+.actionResult {
+	float: left;
+	width: 90%;
+	padding: 0;
+	margin-left: 5%;
+	margin-bottom: 10px;
+	display: block;
+	font-family: 'Yanone Kaffeesatz', Arial, Helvetica, sans-serif;
+	cursor: pointer;
+	padding: 9px 0px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border: 1px solid #ddd;
+	/* -- CSS3 - add a drop shadow -- */
+	-webkit-box-shadow: 0px 0 20px #ccc;
+	-moz-box-shadow: 0px 0 20px #ccc;
+	box-shadow: 0px 0 20px #ccc;
+}
+
+#success {
+	background: #E2F5F1;
+}
+
+#errors {
+	background: #F0DBEF;
+}
+
+#success ul li {
+	color: #2C6B5D;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-left: -10px;
+}
+
+#errors ul li {
+	color: #802D32;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin-left: -10px;
+}
+
+nav.menu ul li.subscribe a {
+	margin-left: 20px;
+	padding-left: 33px;
+	text-align: left;
+	background: url("../images/rss.png") left center no-repeat;
+}
+
+#home {
+	width: 1030px;
+	height: 400px;
+	display: table;
+	clear: both;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+}
+
+#homeImage {
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: 10px 10px rgba(139, 106, 106, 0.2);
+	-webkit-box-shadow: 10px 10px rgba(139, 106, 106, 0.2);
+	box-shadow: 10px 10px rgba(139, 106, 106, 0.2);
+	width: 50%;
+	margin-top: 3%;
+}
+
+#container {
+	float: left;
+	padding: 10px 10px 20px 10px;
+	margin: 40px 0 10px -100px;
+	width: 1020px;
+	background-color: #F2EDE7;
+}
+
+#container h1 {
+	padding-left: 9px;
+	margin-left: 0px;
+}
+
+#container  h2 {
+	padding: 0 0 0 10px;
+	font-size: 20px;
+	line-height: 1.5;
+	font-family: 'Yanone Kaffeesatz', Arial, Helvetica, sans-serif;
+}
+
+#container section {
+	overflow: hidden;
+	margin: 0 0 0 0px;
+}
+/* footer */
+footer {
+	width: 1020px;
+	margin: 10px 0 0 -100px;
+	clear: both;
+	color: #f2ede7;
+	padding: 10px 10px 0 10px;
+	background-color: #271408;
+	/* curved border radius */
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	height: 100px;
+}
+
+footer section {
+	width: 300px;
+	float: left;
+	padding: 0 10px;
+}
+
+footer section h2 {
+	margin-top: 0;
+}
+
+footer section p {
+	font-size: 12px;
+}
+
+footer section a {
+	color: #999;
+}
+
+footer section a:hover {
+	color: #FFF;
+	text-decoration: none;
+}
+
+a.button,.dataTables_filter label,.dataTables_length label,input[type="submit"],input#displayed,button
+	{
+	font: 12px/20px "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	line-height: 20px;
+	text-align: center;
+	text-decoration: none;
+	background: #695e53 url("../images/introbkg.png") repeat-x;
+	/* background size */
+	-webkit-background-size: 100%;
+	-o-background-size: 100%;
+	-khtml-background-size: 100%;
+	/* curved border radius */
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+a.button {
+	width: 100px;
+}
+
+#parishioner-data-list_filter, #caregiver-data-list_filter {
+	height: 25px;
+}
+
+.dataTables_filter label,.dataTables_length label,input[type="submit"],a.button,button
+	{
+	color: white;
+	/* curved border radius */
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	padding: 5px;
+}
+
+.dataTables_length {
+	margin-bottom: 2px;
+}
+
+.dataTables_filter {
+	float: left;
+	margin-bottom: 2px;
+}
+
+.dataTables_filter  label {
+	background-color: #ccc;
+}
+
+.paginate_enabled_next,.paginate_disabled_previous,.paginate_disabled_next,.paginate_enabled_previous
+{
+	padding-left: 5px;
+	font-weight: bold;
+	cursor:default;
+	overflow: hidden;
+}
+
+a.button:hover {
+	
+}
+
+.parishioner-data, .caregiver-data {
+	border: 1px solid #e3e3e3;
+	background-color: #f2f2f2;
+	width: 100%;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+
+.parishioner-data tr, .caregiver-data tr {
+	cursor: pointer;
+}
+
+.parishioner-data td,.parishioner-data th, .caregiver-data td,.caregiver-data th {
+	padding: 5px;
+	color: #333;
+}
+
+.parishioner-data td:hover, .caregiver-data td:hover {
+	background-color: #fff;
+}
+
+section#parishioner_list_buttons {
+	margin-left: -100px;
+}
+
+/* for home image */
+.roundtop {
+	background-image: url(images/rounded-top.jpg);
+	width: 315px;
+	height: 10px;
+}
+
+.roundside {
+	background-image: url(images/rounded-sides.jpg);
+	background-repeat: repeat-y;
+	width: 315px;
+	text-align: center;
+}
+
+.roundbottom {
+	background-image: url(images/rounded-bottom.jpg);
+	width: 315px;
+	height: 10px;
+}
+
+/* for inner pages */
+.ui-datepicker-year {
+	padding-left: 10px;
+	margin-left: 10px;
+}
+
+tr:hover {
+	background-color: #ccc;
+}
+
+tr.row_selected {
+	background: #659EC7;
+}
+
+.address {
+	width: 200px;
+	line-height: 10px;
+}
+
+.church-column {
+	float: center;
+	width: 10px;
+	height: 10px;
+	display: block;
+	border-radius: 66px;
+	-moz-border-radius: 66px;
+	-webkit-border-radius: 66px;
+	-khtml-border-radius: 66px;
+	border: #ccc 4px double;
+	font-size: 20px;
+	line-height: 100px;
+	text-shadow: 0 1px 0 #fff;
+	text-decoration: none;
+	text-align: center;
+	color: #888;
+	background: #ddd;
+}
+
+#elim-member {
+	background: #659EC7;
+}
+
+.church-column:hover {
+	background-color: #ccc;
+	border: #bbb 4px double;
+}
+
+.church-column:hover:active {
+	background: -webkit-gradient(linear, left top, left bottombottom, from(#3f759e),
+		to(#539abf) );
+	background: -moz-linear-gradient(top, #3f759e, #539abf);
+	border: 3px solid #366690;
+}
+
+.jbar {
+	height: 50px;
+	width: 100%;
+	background-color: #fff;
+	position: fixed;
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=95 );
+	opacity: 0.95;
+	-moz-opacity: 0.95;
+	text-align: center;
+	left: 0px;
+	z-index: 9999999;
+	margin: 0px;
+	padding: 0px;
+}
+
+.jbar-bottom {
+	bottom: 0px;
+	border-bottom: 2px solid #fff;
+	border-top: 1px solid #ebebeb;
+	color: #777;
+	background-color: #ccc;
+	line-height: 46px;
+	font-size: 18px;
+	font-family: 'Lucida Grande', sans-serif;
+}
+
+.jbar-content {
+	line-height: 46px;
+	font-size: 18px;
+	font-family: 'Lucida Grande', sans-serif;
+}
+
+a.jbar-cross {
+	position: absolute;
+	width: 31px;
+	height: 31px;
+	background: transparent url(../images/cross.png) no-repeat top left;
+	cursor: pointer;
+	right: 10px;
+}
+
+.jbar-bottom:hover {
+	background-color: #659EC7;
+}
+
+.jbar-bottom a.jbar-cross {
+	bottom: 8px;
+}
+
+.church_checkbox {
+	float: right;
+}
+
+.church_checkbox input[type="checkbox"] {
+	float: left;
+}
+
+/* filter */
+#cover {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 9000;
+	background-color: #432222;
+	display: none;
+}
+
+#filterScreen {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 640px;
+	height: 400px;
+	display: none;
+	z-index: 9999;
+	padding: 20px;
+}
+
+#filterScreen #filterWindow {
+	position: fixed;
+	padding: 10px;
+	background-color: #F2EDE7;
+}
+
+#filterWindow .d-header {
+	background: url(images/login-header.png) no-repeat 0 0 transparent;
+	width: 375px;
+	height: 150px;
+}
+
+#filterWindow .filter-header {
+	padding-bottom: 30px;
+	text-align: center;
+}
+
+#filterWindow .filter-header div {
+	overflow: scroll;
+	max-height: 120px;
+}
+
+#filterWindow .filter-header label {
+	width: 0px;
+	float: left;
+	text-align: left;
+	margin-left: 50px;
+	display: block;
+}
+
+#filterWindow .filter-header input{
+	top: 60px;
+	left: 100px;
+	border: 3px solid #cccccc;
+	height: 30px;
+	width: 200px;
+	font-size: 12px;
+	padding: 5px;
+	margin-top: 4px;
+	margin-bottom: 0px;
+}
+
+#filterWindow input[type=checkbox] {
+	display: block;
+	float: left;
+	padding-right: 10px;
+	clear: left;
+	margin-left: 50px;
+	margin-top: 0px;
+	width: 20px;
+	height: 20px;
+}
+
+#filterWindow span {
+	vertical-align: middle;
+}
+
+#filterWindow .filter-submit {
+	display: block;
+	height: 53px;
+	text-align: center;
+	position: relative;
+}
+
+#filterWindow .filter-submit button {
+	width: 130px;
+}
+
+/*login*/
+#login-form {
+	margin-top: 150px;
+	margin-left: 150px;
+}
+
+form p input {
+	width: 120px;
+	height: 15px;
+}
+
+#j_username,#j_password {
+	
+}
+
+.styled-select label {
+	width: 300px;
+}
+
+#marital-status-select select {
+	width: 200px;
+}
+
+.small-edit-button {
+	-moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+	box-shadow: inset 0px 1px 0px 0px #ffffff;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f0e8f0
+		), color-stop(1, #dfdfdf) );
+	background: -moz-linear-gradient(center top, #f0e8f0 5%, #dfdfdf 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0e8f0',
+		endColorstr='#dfdfdf' );
+	background-color: #f0e8f0;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #dcdcdc;
+	display: inline-block;
+	color: #777777;
+	font-family: arial;
+	font-size: 15px;
+	font-weight: bold;
+	padding: 4px 5px;
+	text-decoration: none;
+	text-shadow: 1px 1px 0px #ffffff;
+	cursor:default;
+}
+
+.small-edit-button:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dfdfdf
+		), color-stop(1, #f0e8f0) );
+	background: -moz-linear-gradient(center top, #dfdfdf 5%, #f0e8f0 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf',
+		endColorstr='#f0e8f0' );
+	background-color: #dfdfdf;
+}
+
+.small-edit-button:active {
+	position: relative;
+	top: 1px;
+}
+
+#add-child-text {
+	margin-left: 45px;
+	margin-top: 10px;
+}
+
+.children-list {
+	margin-right: 79px;
+	margin-top: 3px;
+	float: right;
+}
+
+.children-list li {
+	border: 1px solid #ddd;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	background-color: #F2F2F2;
+	width: 295px;
+}
+
+/* Children list*/
+.children-list a.child-name {
+	position: relative;
+	display: block;
+	padding: .4em .4em .4em .8em;
+	*padding: .4em;
+	/* margin: .5em 0 .5em 2.5em; */
+	margin-right: 1px;
+	margin-top: 1px;
+	margin-left: 2px;
+	margin-bottom: 1px;
+	background: #ddd;
+	color: #444;
+	text-decoration: none;
+	transition: all .3s ease-out;
+}
+
+.children-list a.child-name:hover {
+	background: #eee;
+}
+
+.children-list a.child-name:before {
+	content: counter(li);
+	counter-increment: li;
+	position: absolute;
+	left: -2.5em;
+	top: 50%;
+	margin-top: -1em;
+	background: #fa8072;
+	height: 2em;
+	width: 2em;
+	line-height: 2em;
+	text-align: center;
+	font-weight: bold;
+}
+
+.children-list a.child-name:after {
+	position: absolute;
+	content: '';
+	border: .5em solid transparent;
+	left: -1em;
+	top: 50%;
+	margin-top: -.5em;
+	transition: all .3s ease-out;
+}
+
+.children-list a.child-name:hover:after {
+	left: -.5em;
+	border-left-color: #fa8072;
+}
+
+ol {
+	counter-reset: li; /* Initiate a counter */
+	list-style: none; /* Remove default numbering */
+	*list-style: decimal; /* Keep using default numbering for IE6/7 */
+	font: 15px 'trebuchet MS', 'lucida sans';
+	padding: 0;
+	margin-bottom: 4em;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+ol ol {
+	margin: 0 0 0 2em; /* Add some left margin for inner lists */
+}
+
+#child {
+	float: left;
+	width: 273px;
+}
+
+#child-label {
+	float: left;
+	width: 300px;
+	margin-left: 45px;
+	margin-top: 10px;
+}
+
+#add-child-input {
+	margin-left: 45px;
+	width:255px;
+	margin-bottom:0px;
+}
+
+#persons-list{
+	margin-left:45px;
+}
+
+/*#photo {
+	position: absolute;
+	top: 0;
+	right: 0;*/
+	/* start of transparency styles */
+/*	opacity: 0;
+	-moz-opacity: 0;
+	filter: alpha(opacity : 0);
+	/* end of transparency styles */
+	/*z-index: 2; /* bring the real upload interactivity up front */
+	/*width: 270px;
+}*/
+
+.child-form{
+	margin-left:45px;
+}
+	
+#child-name{
+	width: 120px;
+	margin-left: 45px;
+}
+
+#child-birth-date{
+	width: 80px;
+}
+
+#create-parishioner{
+	float:left;
+}
+}

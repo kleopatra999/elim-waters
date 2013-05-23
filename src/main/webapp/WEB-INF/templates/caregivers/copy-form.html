@@ -1,0 +1,19 @@
+<div id="caregiver-copy-form">
+	 <form class="clearfix" action="list.html" th:object="${caregiver}" th:action="@{/caregivers/create}" method="post">
+        
+            <h1>Add new member from template</h1>
+
+            <div id="errors" th:if="${#fields.hasErrors('person.*')}">
+                <ul>
+                    <li th:text="#{caregiver_form.validation.errors}">Errors must be corrected before the form can be submitted</li>
+                </ul>
+            </div>
+		<fieldset id="person-details" th:substituteby="caregivers/create :: person-details" ></fieldset>
+		<fieldset>	
+			<section id="caregiver_copy_form_buttons">
+				<input type="submit" value="Add" name="submitMsg" class="submitBtn" th:value="#{caregiver_form.button.submit}"/>
+				<a class="button" href="../index.html" th:href="@{/}" th:text="#{caregiver_form.button.home}">Home</a>
+			</section>
+		</fieldset>
+	</form>
+</div>

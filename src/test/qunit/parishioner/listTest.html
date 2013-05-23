@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Refactored date examples</title>
+
+<link rel="stylesheet" href="/elim/css/jquery-ui-1.8.19.custom.css" />
+<link rel="stylesheet" href="/elim/css/style.css" />
+<link rel="stylesheet" href="/elim/css/glance.css" />
+<link rel="stylesheet" href="/elim/css/qunit.css" />
+<script src="/elim/js/libs/jquery-1.7.2.min.js"></script>
+<script src="/elim/js/libs/jquery-ui-1.8.19.custom.min.js"></script>
+<script src="/elim/js/libs/modernizr-2.0.6.min.js"></script>
+<script src="/elim/js/libs/jquery.i18n.properties-min-1.0.9.js"></script>
+<script src="/elim/js/libs/jquery.dataTables.min.js"></script>
+<script src="/elim/js/libs/qunit.js"></script>
+<script type="text/javascript">
+	var require = {
+		baseUrl : "/elim/js/",
+		paths : {
+			jquery : "require-jquery",
+			dataTables : "data-tables",
+			ajaxFileUpload : "libs/ajaxfileupload",
+			mockjax : "libs/jquery.mockjax",
+			parishionerMocks : "mocking/parishionerMocks"
+		}
+	};
+</script>
+<script src="/elim/js/requirejs.js"></script>
+<script src="/elim/js/main.js"></script>
+<script src="/elim/js/parishioner/listParishionerTest.js"></script>
+</head>
+<body>
+	<div id="qunit"></div>
+	<div id="qunit-fixture">
+		<header>
+			<h1>Elim pentecostal church</h1>
+			<section class="auth-menu">
+
+				<a href="/elim/auth/logout">Logout</a>
+			</section>
+			<nav class="menu">
+				<ul>
+					<li><a href="/elim">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="/elim/parishioners/list">Parishioners</a></li>
+					<li><a href="#">Contact</a></li>
+					<li><a href="#">Support</a></li>
+
+				</ul>
+			</nav>
+		</header>
+		<div id="container">
+			<div id="cover"></div>
+			<section id="filterScreen"></section>
+			<table class="parishioner-data" id="parishioner-data-list">
+				<thead>
+					<tr>
+						<th>ParisihionerID</th>
+						<th>Count</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th class="address">Address</th>
+						<th>Phone</th>
+						<th>E-Mail</th>
+						<th>Workplace</th>
+						<th>Marital Status</th>
+						<th>Studies</th>
+						<th>Baptism Date</th>
+						<!--th th:text="#{parishioner_list.theader.action}" colspan="2">Action</th-->
+
+						<th>Edit</th>
+						<th>Delete</th>
+						<th>Elim</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<section id="filterScreen"
+				style="width: 1339px; height: 1529px; top: -544px; left: 0px; display: none;">
+				<div id="filterWindow" style="top: 59px; left: 403.5px;">
+					<form class="clearfix">
+						<div class="filter-header">
+							<h2>Edit filtering conditions</h2>
+							<div id="filter-conditions" align="center">
+								<br>
+								<span><input type="checkbox" checked="checked"
+									value="FIRST_NAME|%ioan% ">"First Name" contains "ioan"
+								</span><br>
+							</div>
+						</div>						
+					</form>
+				</div>
+			</section>
+		</div>
+		<section id="parishioner_list_buttons">
+			<a class="button btnSmall" href="/elim/">Home</a> <a
+				class="button btnSmall" href="/elim/parishioners/create">New</a> <a
+				class="button btnSmall" id="deleteParishioners">Delete</a> <a
+				class="button btnSmall" href="/elim/parishioners?page=1&size=10">List</a>
+			<a class="button btnSmall" id="parishioner-download">Download</a>
+		</section>
+		<footer>
+			<section>
+				<h3>Biserica penticostala Elim</h3>
+				<p>Str. Frunzisului, nr. 25 (varianta Zorilor-Manastur)</p>
+				<p>Cluj-Napoca, Romania</p>
+			</section>
+
+			<section>
+				<h3>Center Stuff</h3>
+				<p>Center Text here. Proin metus odio, ultricies eu pharetra
+					dictum, laoreet id odio. Curabitur in odio augue. Morbi congue
+					auctor interdum.</p>
+			</section>
+
+			<section>
+				<h3>Copyright</h3>
+				<p>
+					&copy; 2012 <a href="#" title="Elim">ec2-23-22-228-16.compute-1.amazonaws.com</a>
+					All rights reserved.
+				</p>
+			</section>
+
+		</footer>
+		<section class="jbar jbar-bottom hidden">Your changes were
+			sussessfully saved into the database!</section>
+	</div>
+</body>
+</html>

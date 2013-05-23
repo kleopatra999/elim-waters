@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title th:substituteby="index::title"></title>
+<meta name="description" th:substituteby="index::metaDescription" />
+<meta name="author" th:substituteby="index::metaAuthor" />
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<div th:include="index::config" />
+<script th:src="@{/js/libs/jquery.dataTables.min.js}"></script>
+<script th:src="@{/js/libs/jquery.hotkeys.js}"></script>
+<script th:src="@{/js/libs/ajaxfileupload.js}"></script>
+<script th:src="@{/js/caregiver/updateCaregiver.js}"></script>
+<script th:src="@{/js/caregiver/updatePhoto.js}"></script>
+<script th:src="@{/js/caregiver/outcome.js}"></script>
+</head>
+
+<body>
+	<header th:substituteby="index::header"> </header>
+
+	<div id="container">
+		<h1>Edit caregiver details</h1>
+		<div id="caregiver-update-form">
+			<form action="list.html" th:object="${caregiver}"
+				th:action="@{/caregivers/update}" method="post">
+				<div id="errors" th:if="${#fields.hasErrors('*')}">
+					<ul>
+						<li th:text="#{caregiver_form.validation.errors}">Errors
+							must be corrected before the form can be submitted</li>
+					</ul>
+				</div>
+				<fieldset class="hidden" th:fragment="person-id">
+					<!-- Just to send the caregiver Id to Spring MVC controller -->
+					<input class="hidden" type="hidden" name="id" th:field="*{id}" />
+					<input class="hidden" type="hidden" name="personID"
+						id="caregiver-id" th:field="*{person.id}" />
+				</fieldset>
+				<fieldset id="person-details"
+					th:substituteby="caregivers/create :: person-details"></fieldset>
+			</form>
+		</div>
+		<table class="caregiver-data" id="caregiver-data-update">
+			<thead>
+				<tr>
+					<th class="hidden">ParisihionerID</th>
+					<th th:text="#{caregiver_list.theader.count}">Count</th>
+					<th th:text="#{caregiver_list.theader.firstName}">First Name</th>
+					<th th:text="#{caregiver_list.theader.lastName}">Last Name</th>
+				</tr>
+			</thead>
+			<tbody th:if="${#objects.nullSafe(caregivers, false)}">
+				<tr th:each="row, rowStat : ${caregivers}">
+					<td class="hidden" th:text="${row.id}"></td>
+					<td class="row-count" th:text="${rowStat.Count}">1</td>
+					<td th:text="${row.person.firstName}">First Name</td>
+					<td th:text="${row.person.lastName}">Last Name</td>
+				</tr>
+			</tbody>
+		</table>
+		
+
+	</div>
+	<!-- end of #container -->
+
+	<footer th:substituteby="index::footer"></footer>
+	<section th:substituteby="index::jbar"></section>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<title>Filter caregivers</title>
+
+<script src="http://code.jquery.com/jquery-latest.pack.js"></script>
+<script src="../../../js/caregiver/outcome.js" th:src="@{/js/caregiver/outcome.js}"></script>
+
+</head>
+
+<body>
+	<div id="filterWindow">
+		<form class="clearfix">
+			<div class="filter-header">
+				<h2>Edit filtering conditions</h2>
+				<div id="filter-conditions" align="center"></div><br/><br/>
+				
+				<label>Field:</label>				
+				<select id="field" value="">
+					<option value="None"></option>
+					<option value="FIRST_NAME">First Name</option>
+					<option value="LAST_NAME">Last Name</option>
+					<option value="PHONE">Phone</option>
+					<option value="EMAIL">E-Mail</option>
+					<option value="WORKPLACE">Workplace</option>
+					<option value="MARITAL_STATUS">Marital Status</option>
+					<option value="STUDIES">Studies</option>
+					<option value="ADDRESS">Address</option>
+				</select><br /> 
+				<label>Operator:</label>
+				<select id="operator" value="">
+					<option value="None"></option>
+					<option value="=inputValue">equals</option>
+					<option value="%inputValue%">contains</option>
+					<option value="!%inputValue%">doesn't contain</option>
+					<option value="inputValue%">starts with</option>
+					<option value="%inputValue">ends with</option>
+				</select><br /> 
+				<label>Value:</label>
+				<input type="text" id="value" onclick="this.value=''" /><br />
+
+			</div>
+			<div class="filter-submit">
+				<button id="add" class="button" disabled="disabled">Add condition</button> 
+				<button id="apply" class="button">Apply selected</button> 
+				<button id="remove" class="button">Remove selected</button>
+				<button id="cancel" class="button">Cancel</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

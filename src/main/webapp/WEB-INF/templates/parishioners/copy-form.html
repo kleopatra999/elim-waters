@@ -1,0 +1,19 @@
+<div id="parishioner-copy-form">
+	 <form class="clearfix" action="list.html" th:object="${parishioner}" th:action="@{/parishioners/create}" method="post">
+        
+            <h1>Add new member from template</h1>
+
+            <div id="errors" th:if="${#fields.hasErrors('person.*')}">
+                <ul>
+                    <li th:text="#{parishioner_form.validation.errors}">Errors must be corrected before the form can be submitted</li>
+                </ul>
+            </div>
+		<fieldset id="person-details" th:substituteby="parishioners/create :: person-details" ></fieldset>
+		<fieldset>	
+			<section id="parishioner_copy_form_buttons">
+				<input type="submit" value="Add" name="submitMsg" class="submitBtn" th:value="#{parishioner_form.button.submit}"/>
+				<a class="button" href="../index.html" th:href="@{/}" th:text="#{parishioner_form.button.home}">Home</a>
+			</section>
+		</fieldset>
+	</form>
+</div>

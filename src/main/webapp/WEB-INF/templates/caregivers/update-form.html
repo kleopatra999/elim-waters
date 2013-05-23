@@ -1,0 +1,17 @@
+<div id="caregiver-update-form">
+	<form id="update-form" th:object="${caregiver}" class="clearfix" commandName="caregiver" enctype="multipart/form-data" method="post">
+		<fieldset class="hidden" th:fragment="person-id">
+			<!-- Just to send the caregiver Id to Spring MVC controller -->
+			<input class="hidden" type="hidden" name="id" th:field="*{id}" />
+			<input class="hidden" type="hidden" name="personID" id="caregiver-id" th:field="*{person.id}" />
+		</fieldset>	
+		<fieldset id="person-details" th:substituteby="caregivers/create :: person-details" ></fieldset>
+		<fieldset id="update-buttons">	
+			<section id="caregiver_update_form_buttons">
+				<a class="button" id="update-button">Update</a>
+				<a class="button" id="create-button">Add</a>
+				<a class="button" id="cancel-button">Cancel</a>
+			</section>
+		</fieldset>
+	</form>
+</div>

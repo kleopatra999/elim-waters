@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title th:substituteby="index::title"></title>
+<meta name="description" th:substituteby="index::metaDescription" />
+<meta name="author" th:substituteby="index::metaAuthor" />
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<div th:include="index::config" />
+
+<script src="../../../js/libs/jquery.dataTables.min.js"
+	th:src="@{/js/libs/jquery.dataTables.min.js}"></script>
+<script src="../../../js/libs/jquery.hotkeys.js"
+	th:src="@{/js/libs/jquery.hotkeys.js}"></script>
+<script src="../../../js/libs/ajaxfileupload.js"
+	th:src="@{/js/libs/ajaxfileupload.js}"></script>
+<script src="../../../js/parishioner/updateParishioner.js"
+	th:src="@{/js/parishioner/updateParishioner.js}"></script>
+<script src="../../../js/parishioner/updatePhoto.js"
+	th:src="@{/js/parishioner/updatePhoto.js}"></script>
+<script src="../../../js/parishioner/outcome.js"
+	th:src="@{/js/parishioner/outcome.js}"></script>
+</head>
+
+<body>
+	<header th:substituteby="index::header"> </header>
+
+	<div id="container">
+		<h1>Edit Parishioner details</h1>
+		<div id="parishioner-update-form">
+			<form action="list.html" th:object="${parishioner}"
+				th:action="@{/parishioners/update}" method="post">
+				<div id="errors" th:if="${#fields.hasErrors('*')}">
+					<ul>
+						<li th:text="#{parishioner_form.validation.errors}">Errors
+							must be corrected before the form can be submitted</li>
+					</ul>
+				</div>
+				<fieldset class="hidden" th:fragment="person-id">
+					<!-- Just to send the parishioner Id to Spring MVC controller -->
+					<input class="hidden" type="hidden" name="id" th:field="*{id}" />
+					<input class="hidden" type="hidden" name="personID"
+						id="parishioner-id" th:field="*{person.id}" />
+				</fieldset>
+				<fieldset id="person-details"
+					th:substituteby="parishioners/create :: person-details"></fieldset>
+			</form>
+		</div>
+		<table class="parishioner-data" id="parishioner-data-update">
+			<thead>
+				<tr>
+					<th class="hidden">ParisihionerID</th>
+					<th th:text="#{parishioner_list.theader.count}">Count</th>
+					<th th:text="#{parishioner_list.theader.firstName}">First Name</th>
+					<th th:text="#{parishioner_list.theader.lastName}">Last Name</th>
+				</tr>
+			</thead>
+			<tbody th:if="${#objects.nullSafe(parishioners, false)}">
+				<tr th:each="row, rowStat : ${parishioners}">
+					<td class="hidden" th:text="${row.id}"></td>
+					<td class="row-count" th:text="${rowStat.Count}">1</td>
+					<td th:text="${row.person.firstName}">First Name</td>
+					<td th:text="${row.person.lastName}">Last Name</td>
+				</tr>
+			</tbody>
+		</table>
+		<div th:include="children/children-form" />
+
+
+	</div>
+	<!-- end of #container -->
+
+	<footer th:substituteby="index::footer"></footer>
+	<section th:substituteby="index::jbar"></section>
+
+</body>
+</html>

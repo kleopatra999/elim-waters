@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- This template contains the elements of a person form -->
+<!-- First name -->
+<div th:fragment="first-name">
+	<label for="firstName" th:text="#{parishioner_form.label.firstName}"
+		th:class="${#fields.hasErrors('person.firstName')}? 'labelError'">First
+		Name: </label> <span class="labelTextError"
+		th:if="${#fields.hasErrors('person.firstName')}"
+		th:text="#{parishioner_form.validation.firstName}"></span> <input
+		type="text" name="firstName" value="" id="firstName"
+		placeholder="Your First Name" autofocus="autofocus"
+		th:field="*{person.firstName}"
+		th:placeholder="#{parishioner_form.placeholder.firstName}"
+		th:class="${#fields.hasErrors('person.firstName')}? 'fieldError'" />
+</div>
+<!-- Last name -->
+<div th:fragment="last-name">
+	<label for="lastName" th:text="#{parishioner_form.label.lastName}"
+		th:class="${#fields.hasErrors('person.lastName')}? 'labelError'">Last
+		Name: </label> <span class="labelTextError"
+		th:if="${#fields.hasErrors('person.lastName')}"
+		th:text="#{parishioner_form.validation.lastName}"></span> <input
+		type="text" name="lastName" value="" id="lastName"
+		placeholder="Your Last Name" autofocus="autofocus"
+		th:field="*{person.lastName}"
+		th:placeholder="#{parishioner_form.placeholder.lastName}"
+		th:class="${#fields.hasErrors('person.lastName')}? 'fieldError'" />
+</div>
+<div th:fragment="address">
+	<!-- The address -->
+	<section class="person-address" th:fragment="person-address">
+		<label for="address" th:text="#{parishioner_form.label.address}"
+			th:class="${#fields.hasErrors('person.address')}? 'labelError'">Your
+			address: </label> <span class="labelTextError"
+			th:if="${#fields.hasErrors('person.address')}"
+			th:text="#{parishioner_form.validation.address}"></span>
+		<textarea name="address" rows="0" cols="0" id="address"
+			placeholder="Your address..." th:field="*{person.address}"
+			th:placeholder="#{parishioner_form.placeholder.address}"
+			th:class="${#fields.hasErrors('person.address')}? 'fieldError'"></textarea>
+	</section>
+</div>
+<div th:fragment="marital-status">
+	<!-- Marital status -->
+	<div class="styled-select" id="marital-status-select">
+		<label for="maritalStatus"
+			th:text="#{parishioner_form.label.maritalStatus}"
+			th:class="${#fields.hasErrors('person.maritalStatus')}? 'labelError'">Marital
+			Status: </label> <span class="labelTextError"
+			th:if="${#fields.hasErrors('person.maritalStatus')}"
+			th:text="#{parishioner_form.validation.maritalStatus}"></span> <select
+			th:field="*{person.maritalStatus}">
+			<option th:each="maritalStatus : ${maritalStatusList}"
+				th:value="${maritalStatus}" th:text="${maritalStatus}">Married</option>
+		</select>
+	</div>
+</div>
+<div th:fragment="marriage-date">
+	<!-- Marriage Date -->
+	<label for="marriageDate"
+		th:text="#{parishioner_form.label.marriageDate}"
+		th:class="${#fields.hasErrors('person.marriageDate')}? 'labelError'">Marriage
+		Date: </label> <span class="labelTextError"
+		th:if="${#fields.hasErrors('person.marriageDate')}"
+		th:text="#{parishioner_form.validation.marriageDate}"></span> <input
+		type="text" name="marriageDate" value="" id="marriageDate"
+		placeholder="mm/dd/yyyy" class="datePicker" autofocus="autofocus"
+		th:field="*{person.marriageDate}"
+		th:placeholder="#{parishioner_form.placeholder.marriageDate}"
+		th:class="${#fields.hasErrors('person.marriageDate')}? 'fieldError':'datePicker'" />
+</div>
+<div th:fragment="spouse-name">
+	<!-- Spouse name -->
+	<label for="spouseName" th:text="#{parishioner_form.label.spouseName}"
+		th:class="${#fields.hasErrors('person.spouseName')}? 'labelError'">Spouse
+		Name: </label> <span class="labelTextError"
+		th:if="${#fields.hasErrors('person.spouseName')}"
+		th:text="#{parishioner_form.validation.spouseName}"></span> <input
+		type="text" name="spouseName" value="" id="spouseName"
+		autofocus="autofocus" th:field="*{person.spouseName}"
+		th:class="${#fields.hasErrors('person.spouseName')}? 'fieldError'" />
+</div>
+<div th:fragment="spouse-religion">
+	<!-- Spouse religion -->
+	<label for="spouseReligion"
+		th:text="#{parishioner_form.label.spouseReligion}"
+		th:class="${#fields.hasErrors('person.spouseReligion')}? 'labelError'">Spouse
+		Religion: </label> <span class="labelTextError"
+		th:if="${#fields.hasErrors('person.spouseReligion')}"
+		th:text="#{parishioner_form.validation.spouseReligion}"></span> <input
+		type="text" name="spouseReligion" value="" id="spouseReligion"
+		placeholder="1850424125789" autofocus="autofocus"
+		th:field="*{person.spouseReligion}"
+		th:placeholder="#{parishioner_form.placeholder.spouseReligion}"
+		th:class="${#fields.hasErrors('person.spouseReligion')}? 'fieldError'" />
+</div>
+<div th:fragment="studies">
+	<!-- Studies -->
+	<label for="studies" th:text="#{parishioner_form.label.studies}"
+		th:class="${#fields.hasErrors('person.studies')}? 'labelError'">Studies:
+	</label> <span class="labelTextError"
+		th:if="${#fields.hasErrors('person.studies')}"
+		th:text="#{parishioner_form.validation.studies}"></span>
+	<div class="styled-select">
+		<select th:field="*{person.studies}">
+			<option th:each="education : ${studiesList}" th:value="${education}"
+				th:text="${education}">Highschool</option>
+		</select>
+	</div>
+</div>
+<div th:fragment="company">
+	<!-- Company -->
+	<label for="company" th:text="#{parishioner_form.label.company}"
+		th:class="${#fields.hasErrors('person.company')}? 'labelError'">Company:
+	</label> <span class="labelTextError"
+		th:if="${#fields.hasErrors('person.company')}"
+		th:text="#{parishioner_form.validation.company}"></span> <input
+		type="text" name="company" value="" id="company"
+		placeholder="Microsoft" autofocus="autofocus"
+		th:field="*{person.company}"
+		th:placeholder="#{parishioner_form.placeholder.company}"
+		th:class="${#fields.hasErrors('person.company')}? 'fieldError'" />
+</div>
+<div th:fragment="job">
+	<!-- Job -->
+	<label for="job" th:text="#{parishioner_form.label.job}"
+		th:class="${#fields.hasErrors('person.job')}? 'labelError'">Job:
+	</label> <span class="labelTextError"
+		th:if="${#fields.hasErrors('person.job')}"
+		th:text="#{parishioner_form.validation.job}"></span> <input
+		type="text" name="job" value="" id="job" placeholder="Programmer"
+		autofocus="autofocus" th:field="*{person.job}"
+		th:placeholder="#{parishioner_form.placeholder.job}"
+		th:class="${#fields.hasErrors('person.job')}? 'fieldError'" />
+</div>
+<div th:fragment="birth-date">
+	<!-- Birth Date -->
+	<label for="birthDate" th:text="#{parishioner_form.label.birthDate}"
+		th:class="${#fields.hasErrors('person.birthDate')}? 'labelError'">Marriage
+		Date: </label> <span class="labelTextError"
+		th:if="${#fields.hasErrors('person.birthDate')}"
+		th:text="#{parishioner_form.validation.birthDate}"></span> <input
+		type="text" name="birthDate" value="" id="birthDate"
+		placeholder="mm/dd/yyyy" class="datePicker" autofocus="autofocus"
+		th:field="*{person.birthDate}"
+		th:placeholder="#{parishioner_form.placeholder.birthDate}"
+		th:class="${#fields.hasErrors('person.birthDate')}? 'fieldError':'datePicker'" />
+</div>
+<div th:fragment="phone">
+	<!-- Phone -->
+	<label for="phone" th:text="#{parishioner_form.label.phone}"
+		th:class="${#fields.hasErrors('person.phone')}? 'labelError'">Phone:</label>
+	<span class="labelTextError"
+		th:if="${#fields.hasErrors('person.phone')}"
+		th:text="#{parishioner_form.validation.phone}"></span> <input
+		type="tel" name="phone" value="" id="phone" placeholder="00 000-0000"
+		th:field="*{person.phone}"
+		th:placeholder="#{parishioner_form.placeholder.phone}"
+		th:class="${#fields.hasErrors('person.phone')}? 'fieldError'" />
+</div>
+<div th:fragment="email">
+	<!-- Email -->
+	<label for="email" th:text="#{parishioner_form.label.email}"
+		th:class="${#fields.hasErrors('person.email')}? 'labelError'">Email:
+	</label> <span class="labelTextError"
+		th:if="${#fields.hasErrors('person.email')}"
+		th:text="#{parishioner_form.validation.email}"></span> <input
+		type="email" name="email" value="" id="email"
+		placeholder="mail@email.com" th:field="*{person.email}"
+		th:placeholder="#{parishioner_form.placeholder.email}"
+		th:class="${#fields.hasErrors('person.email')}? 'fieldError'" />
+</div>
+</html>

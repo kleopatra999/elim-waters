@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title th:substituteby="index::title"></title>
+<meta name="description" th:substituteby="index::metaDescription" />
+<meta name="author" th:substituteby="index::metaAuthor" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<div th:include="index::config"></div>
+<link rel="stylesheet" th:href="@{/css/parishioner/create.css}" />
+<script th:src="@{/js/parishioner/createParishioner.js}"></script>
+<script th:src="@{/js/parishioner/outcome.js}"></script>
+<script th:src="@{/js/parishioner/updatePhoto.js}"></script>
+</head>
+
+<body>
+	<header th:substituteby="index::header"> </header>
+	<div id="container">
+		<form id="create-parishioner" class="clearfix" action="list.html"
+			th:object="${parishioner}" th:action="@{/parishioners/create}"
+			method="post">
+
+			<h1>Add new member</h1>
+
+			<div id="errors" th:if="${#fields.hasErrors('person.*')}">
+				<ul>
+					<li th:text="#{parishioner_form.validation.errors}">Errors
+						must be corrected before the form can be submitted</li>
+				</ul>
+			</div>
+
+			<fieldset id="person-fields" th:fragment="person-details">
+				<datalist id="persons" class="persons-names-option"
+					th:fragment="baptists-list">
+				</datalist>
+
+				<section id="photo-placehoder"></section>
+				<section class="person-details">
+					<!--div th:substituteby="persons/form :: first-name"></div-->
+					<div th:substituteby="persons/form::first-name"></div>
+					<div th:substituteby="persons/form::last-name"></div>
+					<div th:substituteby="persons/form::address"></div>
+					<div th:substituteby="parishioners/form::baptism-date"></div>
+					<div th:substituteby="parishioners/form::baptist"></div>
+					<div th:substituteby="persons/form::marital-status"></div>
+					<div th:substituteby="persons/form::marriage-date"></div>
+				</section>
+				<section class="person-details">
+					<div th:substituteby="persons/form::spouse-name"></div>
+					<div th:substituteby="persons/form::spouse-religion"></div>
+					<div th:substituteby="persons/form::studies"></div>
+					<div th:substituteby="persons/form::company"></div>
+					<div th:substituteby="persons/form::job"></div>
+					<!-- input type="file" id="file" name="file" th:field="*{person.image}">
+					</input>-->
+					<section id="parishioner-details">
+						<div th:substituteby="parishioners/form::holy-spirit-baptism"></div>
+						<div th:substituteby="persons/form::birth-date"></div>
+						<div th:substituteby="persons/form::phone"></div>
+						<div th:substituteby="persons/form::email"></div>
+						<!-- Photo -->
+						<!-- label for="photo" th:text="#{parishioner_form.label.photo}"
+							th:class="${#fields.hasErrors('person.photo')}? 'labelError'">Photo:
+						</label> <span class="labelTextError"
+							th:if="${#fields.hasErrors('person.photo')}"
+							th:text="#{parishioner_form.validation.photo}"></span>
+						<div id="photo-wrapper">
+							<input type="file" name="photo" value="" id="photo"
+								th:class="${#fields.hasErrors('person.photo')}? 'fieldError'" />
+						</div -->
+					</section>
+				</section>
+			</fieldset>
+
+			<a class="button" id="create-button">Add</a> <a class="button"
+				id="list-button" th:href="@{/parishioners/list}">List</a> <a
+				class="button" id="cancel-button">Cancel</a>
+		</form>
+		<div th:include="children/children-form"></div>
+	</div>
+	<!-- end of #container -->
+	<footer th:substituteby="index::footer"></footer>
+</body>
+</html>
