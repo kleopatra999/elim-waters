@@ -16,11 +16,11 @@ public interface PersonRepository extends JpaRepository<Person, Long>{
 	@Query("delete from Person p where p.id>:id")
 	public void deleteByIdGreatherThan(@Param("id") Long id);
 	
-	@Query("select p.id,p.firstName,p.lastName,p.birthDate from Person p order by lastName,firstName")
+	@Query(value = "select p.id,p.firstName,p.lastName,p.birthDate from Person p order by lastName,firstName")
 	List<Person> findNames();
 	
-	@Query("from Person p " +
-			"where p.firstName=:firstName and p.lastName=:lastName")
+	@Query(value = "from Person p " +
+            "where p.firstName=:firstName and p.lastName=:lastName")
 	public List<Person> findByFirstNameAndLastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
 
 	//public void deleteByIdGreatherThan(Long id);

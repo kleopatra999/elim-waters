@@ -24,12 +24,14 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.annotate.JsonFilter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
 @Table(name = "person")
 @Inheritance(strategy=InheritanceType.JOINED)
+@JsonFilter("PersonFilter")
 public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 	/* Ignore this field when serializing it using Jackson, otherwise you'll get infinit loop because it's also referred in children table

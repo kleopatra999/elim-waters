@@ -191,4 +191,15 @@ public class PersonService {
             }
         }
     }
+
+    @Transactional
+    public void addChildren(List<Children> children) throws PersonDoesNotExistException, ChildrenAlreadyExistsException {
+        for(Children child: children){
+            addChild(child.getParent().getId(),child.getChild().getId());
+        }
+    }
+
+    public List<Person> findAll() {
+        return personRepo.findAll();
+    }
 }

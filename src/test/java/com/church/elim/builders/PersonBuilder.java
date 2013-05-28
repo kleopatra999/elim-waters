@@ -4,6 +4,7 @@ import com.church.elim.domain.Children;
 import com.church.elim.domain.Person;
 import org.apache.commons.lang.math.RandomUtils;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,6 +30,11 @@ public class PersonBuilder {
 
     public PersonBuilder(){
     }
+
+    public static PersonBuilder aPerson(){
+        return new PersonBuilder();
+    }
+
     public PersonBuilder withId(Long id){
         this.id = id;
         return this;
@@ -49,6 +55,9 @@ public class PersonBuilder {
 
     public Person buildRandom(){
         Person person = new Person(newName("firstName"),newName("lastName"));
+        person.setBirthDate(new Date());
+        person.setAddress("Str. Maresal Ion Antonescu");
+        person.setJob("programmer");
         person.setId(newId());
         return person;
     }
