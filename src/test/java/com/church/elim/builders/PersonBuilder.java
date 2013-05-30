@@ -2,8 +2,6 @@ package com.church.elim.builders;
 
 import com.church.elim.domain.Children;
 import com.church.elim.domain.Person;
-import org.apache.commons.lang.math.RandomUtils;
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +14,6 @@ import static com.church.elim.ElimRandom.newName;
  * User: adi
  * Date: 5/15/13
  * Time: 10:43 PM
- * To change this template use File | Settings | File Templates.
  */
 public class PersonBuilder {
     private String firstName = "Pop";
