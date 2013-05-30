@@ -1,6 +1,7 @@
 package com.church.elim.matchers;
 
 import com.church.elim.domain.Person;
+import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.springframework.test.web.servlet.ResultActions;
@@ -12,9 +13,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * User: adi
  * Date: 5/15/13
  * Time: 9:59 PM
- * To change this template use File | Settings | File Templates.
  */
-public class PersonMatcher implements Matcher<Person> {
+public class PersonMatcher extends BaseMatcher<Person> {
     private final ResultActions actions;
 
     public enum MatchType {JSON_PATH}
@@ -22,7 +22,7 @@ public class PersonMatcher implements Matcher<Person> {
     ;
     MatchType matchType;
 
-    private PersonMatcher(ResultActions actions) {
+    public PersonMatcher(ResultActions actions) {
         this.actions = actions;
         this.matchType = MatchType.JSON_PATH;
     }
@@ -51,16 +51,9 @@ public class PersonMatcher implements Matcher<Person> {
 
     @Override
     public void describeMismatch(Object o, Description description) {
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public void _dont_implement_Matcher___instead_extend_BaseMatcher_() {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public void describeTo(Description description) {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 }

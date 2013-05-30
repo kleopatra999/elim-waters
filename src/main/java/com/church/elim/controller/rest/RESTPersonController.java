@@ -47,16 +47,15 @@ public class RESTPersonController {
     PersonService personService;
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<String>>
-    getPersons(@RequestParam String fields) throws IOException {
+    public ResponseEntity<List<String>> getPersons(@RequestParam String fields) throws IOException {
         List<Person> persons = personService.findAll();
         return new ResponseEntity<List<String>>(filterList(fields, persons), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public
     @ResponseBody
-    Person getPerson(@PathVariable("id") Long id) throws PersonDoesNotExistException {
+    @ResponseStatus(HttpStatus.OK)
+    public Person getPerson(@PathVariable("id") Long id) throws PersonDoesNotExistException {
         Person person = personService.findOne(id);
         return person;
     }

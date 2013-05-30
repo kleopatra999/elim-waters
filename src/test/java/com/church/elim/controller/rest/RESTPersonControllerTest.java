@@ -18,6 +18,7 @@ import com.church.elim.controller.PersonController;
 import com.church.elim.domain.Children;
 import com.church.elim.matchers.PersonMatcher;
 import com.church.elim.service.*;
+import com.jayway.jsonpath.JsonPath;
 import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
@@ -94,11 +95,15 @@ public class RESTPersonControllerTest extends ElimTest{
         List<Person> persons = new ArrayList<Person>();
         persons.add(aPerson().buildRandom());
         persons.add(aPerson().buildRandom());
+        //JsonPath p = ;
         when(this.mockPersonService.findAll()).thenReturn(persons);
         ResultActions actions = this.mockMvc.perform(get("/persons?fields=firstName,lastName")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-        //assertThat(popIonel, PersonMatcher.createMatcher(actions));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$..firstName").value(Matchers.notNullValue()))
+                .andExpect(jsonPath("$..lastName").value(Matchers.notNullValue()))
+                .andExpect(jsonPath("$..id").value(Matchers.nullValue()));
+        System.out.println(actions.andReturn().getResponse().getContentAsString());
     }
 
     @Test
