@@ -50,12 +50,6 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 public class RESTPersonControllerTest extends ElimTest{
-    @Autowired WebApplicationContext wac;
-    @Autowired MockServletContext servletContext; // cached
-    @Autowired MockHttpSession session;
-    @Autowired MockHttpServletRequest request;
-    @Autowired MockHttpServletResponse response;
-    @Autowired ServletWebRequest webRequest;
     @Autowired
     private RESTPersonController personController;
     PersonService mockPersonService = Mockito.mock(PersonService.class);
@@ -95,14 +89,13 @@ public class RESTPersonControllerTest extends ElimTest{
         List<Person> persons = new ArrayList<Person>();
         persons.add(aPerson().buildRandom());
         persons.add(aPerson().buildRandom());
-        //JsonPath p = ;
         when(this.mockPersonService.findAll()).thenReturn(persons);
         ResultActions actions = this.mockMvc.perform(get("/persons?fields=firstName,lastName")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$..firstName").value(Matchers.notNullValue()))
                 .andExpect(jsonPath("$..lastName").value(Matchers.notNullValue()))
-                .andExpect(jsonPath("$..id").value(Matchers.nullValue()));
+                .andExpect(jsonPath("$..id").value(Matchers.empty()));
         System.out.println(actions.andReturn().getResponse().getContentAsString());
     }
 

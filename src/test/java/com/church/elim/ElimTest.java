@@ -23,6 +23,10 @@ import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.mock.web.MockHttpSession;
+import org.springframework.mock.web.MockServletContext;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.context.ActiveProfiles;
@@ -40,11 +44,28 @@ import com.church.elim.repository.ParishionerRepository;
 import com.church.elim.repository.PersonRepository;
 import com.church.elim.service.CustomUserDetailsService;
 import com.church.elim.utils.ElimMessage;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.request.ServletWebRequest;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles({"default", "dev"})
 @ContextConfiguration(classes={TestDataConfiguration.class})
 public class ElimTest {
-	@Autowired 
+    @Autowired
+    protected
+    WebApplicationContext wac;
+    @Autowired
+    MockServletContext servletContext; // cached
+    @Autowired
+    MockHttpSession session;
+    @Autowired
+    MockHttpServletRequest request;
+    @Autowired
+    MockHttpServletResponse response;
+    @Autowired
+    ServletWebRequest webRequest;
+
+    @Autowired
 	ElimMessage messageSource;
 	@Autowired
 	ParishionerRepository parishionerRepo;

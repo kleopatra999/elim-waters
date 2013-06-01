@@ -87,47 +87,17 @@ public class RESTPersonController {
             produces = "application/json")
     public
     @ResponseBody
-    Children addChildrenByName(@PathVariable("id") Long parentId, @RequestBody String childName, HttpServletResponse response, HttpServletRequest request, Model uiModel) throws IOException {
+    ResponseEntity<Children> addChildrenByName(@PathVariable("id") Long parentId, @RequestBody String childName) throws Exception {
         String message = "";
         Children children = null;
-        try {
-            children = personService.addChild(parentId, childName);
-            message = "Successfully added children" + childName + "!";
-            response.setStatus(HttpServletResponse.SC_OK);
-        } catch (Exception e) {
-            message = e.toString();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, message);
-            return null;
-        }
-        return children;
+        children = personService.addChild(parentId, childName);
+        message = "Successfully added children" + childName + "!";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(linkTo(RESTPersonController.class).slash(parentId).slash("children").toUri());
+        return new ResponseEntity<Children>(children, HttpStatus.CREATED);
     }
 
-    /* Adds a child to a person children list and returns the added children entity */
-    @RequestMapping(value = "/{id}/children/add-list", method = RequestMethod.POST,
-            produces = "application/json")
-    public
-    @ResponseBody
-    Children addChildrenListByName(@PathVariable("id") Long parentId, @RequestBody List<String> childNames, HttpServletResponse response, HttpServletRequest request, Model uiModel) throws IOException {
-        String message = "";
-        Children children = null;
-        try {
-            for (String childName : childNames) {
-                try {
-                    children = personService.addChild(parentId, childName);
-                } catch (ChildAlreadyExistsException e) {
-                    // TODO
-                }
-            }
-            response.setStatus(HttpServletResponse.SC_OK);
-        } catch (Exception e) {
-            message = e.toString();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, message);
-            return null;
-        }
-        return children;
-    }
-
-    /* Adds a child to a person children list and returns the added children entity */
+    /* Deletes child. */
     @RequestMapping(value = "/{parentId}/children/{childId}", method = RequestMethod.DELETE)
     @ResponseBody
     public ResponseEntity<Void> deleteChild(@PathVariable Long parentId, @PathVariable Long childId)

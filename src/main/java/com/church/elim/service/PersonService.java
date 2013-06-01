@@ -33,23 +33,23 @@ public class PersonService {
      * Adds a child in the list od the parent.
      *
      * @param parentId
-     * @param _childName the name of the child (possibly separated by | from the birth date value)
+     * @param childName the name of the child (possibly separated by | from the birth date value)
      * @return
      * @throws Exception
      */
     @Transactional
-    public Children addChild(Long parentId, String _childName) throws Exception {
+    public Children addChild(Long parentId, String childName) throws Exception {
         Children children = null;
         Children childrenEntity = null;
-        String childName = parseChildName(_childName);
+        String _childName = parseChildName(childName);
         Date birthDate = parseChildBirthDate(_childName);
-        if (parentId != null && childName != null && !childName.equals("")) {
+        if (parentId != null && _childName != null && !_childName.equals("")) {
             children = new Children();
             System.out.println("Children++");
             Person parent = personRepo.findOne(parentId);
             System.out.println(parent.toString());
-            String firstName = getFirstName(childName);
-            String lastName = getLastName(childName);
+            String firstName = getFirstName(_childName);
+            String lastName = getLastName(_childName);
 
             List<Person> result = personRepo.findByFirstNameAndLastName(firstName, lastName);
             Person child = null;
@@ -64,7 +64,7 @@ public class PersonService {
             children.setParent(parent);
             children.setChild(child);
             if (childrenService.exists(children)) {
-                throw new ChildAlreadyExistsException(parentId, childName);
+                throw new ChildAlreadyExistsException(parentId, _childName);
             }
             childrenEntity = childrenRepo.saveAndFlush(children);
         }

@@ -12,7 +12,6 @@ import java.lang.reflect.Type;
 public class ReflectionUtils {
     public static Class getActualTypeOfGenericParameter(Object object, int genericTypeIndex){
         Type mySuperclass = object.getClass().getGenericSuperclass();
-        Type tType = ((ParameterizedType)mySuperclass).getActualTypeArguments()[0];
-        return tType.getClass();
+        return (Class)((ParameterizedType)mySuperclass).getActualTypeArguments()[0];
     }
 }

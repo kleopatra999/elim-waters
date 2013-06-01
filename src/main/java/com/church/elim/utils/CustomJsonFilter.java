@@ -9,8 +9,6 @@ import org.springframework.http.converter.json.MappingJacksonHttpMessageConverte
 import java.io.IOException;
 import java.util.*;
 
-import static com.church.elim.utils.ReflectionUtils.getActualTypeOfGenericParameter;
-
 /**
  * Created with IntelliJ IDEA.
  * User: adi
@@ -29,6 +27,7 @@ public class CustomJsonFilter {
         this.filterClasses = filterClasses;
         this.filterProvider = getFilterProvider(fields);
         this.mapper = new ObjectMapper();
+        mapper.setAnnotationIntrospector(new CustomJacksonIntrospector());
         mapper.setFilters(this.filterProvider);
     }
 
