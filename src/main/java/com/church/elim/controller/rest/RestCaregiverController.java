@@ -1,4 +1,4 @@
-package com.church.elim.controller;
+package com.church.elim.controller.rest;
 
 
 import java.io.IOException;
@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import com.church.elim.controller.rest.RestDomainController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -36,7 +37,7 @@ import com.church.elim.service.DownloadService;
 import com.church.elim.service.CaregiverService;
 
 @Secured("ROLE_USER")
-@SessionAttributes(value={"maritalStatus","studiesList"})
 @Controller
-public class CaregiverController {
+@RequestMapping("/caregivers")
+public class RestCaregiverController extends RestDomainController<Caregiver>{
 }

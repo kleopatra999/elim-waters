@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,5 +40,9 @@ public class DomainService<E> implements ApplicationContextAware {
             String repositoryBeanName = entityClass.getSimpleName().toLowerCase() + "Repository";
             repository = (JpaRepository<E, Long>) applicationContext.getBean(repositoryBeanName);
         }
+    }
+
+    public E get(Long id) {
+        return repository.findOne(id);
     }
 }
