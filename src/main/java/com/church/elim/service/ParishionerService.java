@@ -104,7 +104,7 @@ public class ParishionerService {
 		/**
 		 * Sometimes the person can be added independent from the parishioner 
 		 * (e.g. adding new children), therefore we must check if the person already 
-		 * exists before creating a new one when we save a new parishioner.
+		 * exists before creating a new one when we create a new parishioner.
 		 */
 		Person p = parishioner.getPerson();
 		List<Person> result = personRepo.findByFirstNameAndLastName(parishioner.getFirstName(),

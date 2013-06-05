@@ -14,31 +14,22 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 
 import com.church.elim.builders.ChildrenBuilder;
 import com.church.elim.builders.PersonBuilder;
-import com.church.elim.controller.PersonController;
 import com.church.elim.domain.Children;
 import com.church.elim.matchers.PersonMatcher;
 import com.church.elim.service.*;
-import com.jayway.jsonpath.JsonPath;
 import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.mockito.internal.matchers.Any;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.mock.web.MockHttpSession;
-import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.request.ServletWebRequest;
 
 import com.church.elim.ElimTest;
 import com.church.elim.domain.Person;
@@ -51,7 +42,7 @@ import java.util.List;
 @WebAppConfiguration
 public class RESTPersonControllerTest extends ElimTest{
     @Autowired
-    private RESTPersonController personController;
+    private RestPersonController personController;
     PersonService mockPersonService = Mockito.mock(PersonService.class);
     ChildrenService mockChildrenService = Mockito.mock(ChildrenService.class);
     PersonRepository mockPersonRepo = Mockito.mock(PersonRepository.class);
@@ -67,9 +58,9 @@ public class RESTPersonControllerTest extends ElimTest{
     public void setup() {
         popIonel = personBuilder.build();
         mockMvc = webAppContextSetup(wac).build();
-        ReflectionTestUtils.setField(wac.getBean(RESTPersonController.class), "personService", mockPersonService);
-        ReflectionTestUtils.setField(wac.getBean(RESTPersonController.class), "personRepo", mockPersonRepo);
-        ReflectionTestUtils.setField(wac.getBean(RESTPersonController.class), "childrenService", mockChildrenService);
+        ReflectionTestUtils.setField(wac.getBean(RestPersonController.class), "personService", mockPersonService);
+        ReflectionTestUtils.setField(wac.getBean(RestPersonController.class), "personRepo", mockPersonRepo);
+        ReflectionTestUtils.setField(wac.getBean(RestPersonController.class), "childrenService", mockChildrenService);
     }
 
     @Test
@@ -128,7 +119,7 @@ public class RESTPersonControllerTest extends ElimTest{
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
                 .andExpect(header().string("Location",
-                        linkTo(RESTPersonController.class).slash(popIonel.getId()).slash("children").toUri().toString()));;
+                        linkTo(RestPersonController.class).slash(popIonel.getId()).slash("children").toUri().toString()));;
     }
 
     @Test

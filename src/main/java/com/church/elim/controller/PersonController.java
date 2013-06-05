@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import com.church.elim.controller.rest.RestDomainController;
 import com.church.elim.service.PersonDoesNotExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -43,7 +44,7 @@ import com.church.elim.service.PersonService;
 @SessionAttributes(value = {"maritalStatus", "studiesList"})
 @Controller
 @RequestMapping("/persons")
-public class PersonController {
+public class PersonController{
     @Autowired
     private PersonRepository personRepo;
     @Autowired
@@ -64,24 +65,12 @@ public class PersonController {
     @RequestMapping(value = "/parishioners/create", method = RequestMethod.GET)
     public ModelAndView addNewMember() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("parishioners/save");
+        modelAndView.setViewName("parishioners/create");
         Parishioner parishioner = new Parishioner();
         Person person = new Person();
         parishioner.setPerson(person);
         modelAndView.addObject("parishioner", parishioner);
         return modelAndView;
-    }
-
-    @Secured("ROLE_ADMIN")
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    @ResponseBody
-    public ResponseEntity<Void> create(
-            @Valid @RequestBody Person person,
-            BindingResult result) throws Exception {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(linkTo(PersonController.class).slash(person.getId()).toUri());
-        personService.save(person);
-        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/parishioners/list", params = {"page", "size"}, method = RequestMethod.GET)
@@ -118,23 +107,16 @@ public class PersonController {
     }
 
 
-    @Secured("ROLE_ADMIN")
-    @RequestMapping(value = "/{id}", produces = "text/html", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> remove(@PathVariable("id") Long id) throws PersonDoesNotExistException {
-        personService.remove(id);
-        return new ResponseEntity<Void>(HttpStatus.OK);
-    }
-
     @RequestMapping(value = "/parishioners/{id}", params = "copy", method = RequestMethod.GET)
     public String copyMember(@PathVariable("id") Long id, Model uiModel) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("parishioners/save");
+        modelAndView.setViewName("parishioners/create");
         Parishioner parishioner = parishionerRepo.findOne(id);
         System.out.println("copying from " + parishioner.getPerson().getLastName() + parishioner.getId());
 
         uiModel.addAttribute(parishionerRepo.findOne(id));
         uiModel.asMap().clear();
-        return "redirect:/parishioners/save?id=" + id;
+        return "redirect:/parishioners/create?id=" + id;
     }
 
     @RequestMapping(value = "/parishioners/{id}", params = "update", method = RequestMethod.GET)

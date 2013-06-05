@@ -1,29 +1,15 @@
 package com.church.elim.controller.rest;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.StringTokenizer;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 import com.church.elim.service.*;
-import com.church.elim.utils.CustomJsonFilter;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.ser.FilterProvider;
-import org.codehaus.jackson.map.ser.impl.SimpleBeanPropertyFilter;
-import org.codehaus.jackson.map.ser.impl.SimpleFilterProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.church.elim.domain.Children;
@@ -36,7 +22,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @Controller
 @RequestMapping("/persons")
-public class RESTPersonController {
+public class RestPersonController extends RestDomainController<Person>{
     @Autowired
     PersonRepository personRepo;
     @Autowired
@@ -50,14 +36,6 @@ public class RESTPersonController {
     public ResponseEntity<List<String>> getPersons(@RequestParam String fields) throws IOException {
         List<Person> persons = personService.findAll();
         return new ResponseEntity<List<String>>(filterList(fields, persons), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    @ResponseStatus(HttpStatus.OK)
-    public Person getPerson(@PathVariable("id") Long id) throws PersonDoesNotExistException {
-        Person person = personService.findOne(id);
-        return person;
     }
 
     @RequestMapping(value = "/{id}/children", method = RequestMethod.GET)
@@ -78,7 +56,7 @@ public class RESTPersonController {
             throws IOException, ChildrenAlreadyExistsException, PersonDoesNotExistException {
         personService.addChildren(children);
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(linkTo(RESTPersonController.class).slash(parentId).slash("children").toUri());
+        headers.setLocation(linkTo(RestPersonController.class).slash(parentId).slash("children").toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
@@ -93,7 +71,7 @@ public class RESTPersonController {
         children = personService.addChild(parentId, childName);
         message = "Successfully added children" + childName + "!";
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(linkTo(RESTPersonController.class).slash(parentId).slash("children").toUri());
+        headers.setLocation(linkTo(RestPersonController.class).slash(parentId).slash("children").toUri());
         return new ResponseEntity<Children>(children, HttpStatus.CREATED);
     }
 

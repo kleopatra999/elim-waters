@@ -29,7 +29,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @JsonIgnoreProperties(ignoreUnknown = true) 
 @Entity
 @Table(name = "caregiver")
-public class Caregiver implements Serializable {
+public class Caregiver implements Serializable, Identifiable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "id")

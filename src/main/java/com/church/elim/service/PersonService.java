@@ -19,7 +19,7 @@ import com.church.elim.repository.ChildrenRepository;
 import com.church.elim.repository.PersonRepository;
 
 @Service
-public class PersonService {
+public class PersonService extends DomainService<Person>{
     @Autowired
     ChildrenService childrenService;
     @Autowired
@@ -115,22 +115,10 @@ public class PersonService {
         return birthDate;
     }
 
-    @Transactional
-    public Person save(Person person) {
-        return personRepo.saveAndFlush(person);
-    }
 
     @Transactional
     public void deleteByIdGreaterThan(Long id) {
         personRepo.deleteByIdGreatherThan(id);
-    }
-
-    public void remove(Long id) throws PersonDoesNotExistException {
-        Person person = personRepo.findOne(id);
-        if (person == null) {
-            throw new PersonDoesNotExistException(id);
-        }
-        personRepo.delete(id);
     }
 
     public Person findOne(Long id) throws PersonDoesNotExistException {

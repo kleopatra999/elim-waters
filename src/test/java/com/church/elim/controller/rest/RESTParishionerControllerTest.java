@@ -82,8 +82,8 @@ public class RESTParishionerControllerTest extends ElimTest{
 
         @Test
         public void testParishionerCRUD() throws URISyntaxException{
-                // save
-                URI uri = getUri("/rest/parishioners/save");
+                // create
+                URI uri = getUri("/rest/parishioners/create");
                 MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
                 map.add("person.firstName", popIonel.getPerson().getFirstName());
                 map.add("person.lastName", popIonel.getPerson().getLastName());
@@ -95,7 +95,7 @@ public class RESTParishionerControllerTest extends ElimTest{
 
                 assertNotNull(ionel);
 
-                // get
+                // create
                 Long ionelId = ionel.getId(); 
                 System.out.println("Ionel id:" + ionelId);
                 uri = getUri("/rest/parishioners/"+ionelId);

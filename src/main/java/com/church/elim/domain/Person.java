@@ -24,16 +24,15 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.map.annotate.JsonFilter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
 @Table(name = "person")
 @Inheritance(strategy=InheritanceType.JOINED)
-public class Person implements Serializable {
+public class Person implements Serializable, Identifiable {
 	private static final long serialVersionUID = 1L;
-	/* Ignore this field when serializing it using Jackson, otherwise you'll get infinit loop because it's also referred in children table
+	/* Ignore this field when serializing it using Jackson, otherwise you'll create infinit loop because it's also referred in children table
 	 */
 	@JsonIgnore
 	@OneToMany (mappedBy="parent", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
@@ -95,9 +94,10 @@ public class Person implements Serializable {
 		return this.id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
 	public String getSpouseName() {
 		return spouseName;

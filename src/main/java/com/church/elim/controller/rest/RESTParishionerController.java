@@ -164,7 +164,7 @@ public class RESTParishionerController {
 
 		try{
 			parishionerService.addParishioner(parishioner);
-			out.put(RESULT_KEY, messageSource.getMessage("parishioner.save.success"));
+			out.put(RESULT_KEY, messageSource.getMessage("parishioner.create.success"));
 			out.put(ID_KEY, parishioner.getId());
 			uiModel.asMap().clear();
 			uiModel.addAttribute(parishioner);
@@ -174,7 +174,7 @@ public class RESTParishionerController {
 			if (e instanceof IllegalArgumentException) 
 				errors.put("cnp", e.getMessage());
 			else{
-				errors.put("", messageSource.getMessage("parishioner.save.exception.unknown_reason",
+				errors.put("", messageSource.getMessage("parishioner.create.exception.unknown_reason",
 						e.getMessage()));
 				e.printStackTrace();
 			}
@@ -272,7 +272,7 @@ public class RESTParishionerController {
 			return "{\"result\": \"" + e.getMessage() + "\"}";
 		}
 
-		return "{\"result\": \""+messageSource.getMessage("parishioner.save.success")+"\"}";
+		return "{\"result\": \""+messageSource.getMessage("parishioner.create.success")+"\"}";
 	}
 
 
@@ -344,7 +344,7 @@ public class RESTParishionerController {
 
 	/**
 	 * Downloads the report as an Excel format. 
-	 * Make sure this method doesn't return any model. Otherwise, you'll get 
+	 * Make sure this method doesn't return any model. Otherwise, you'll create
 	 * an "IllegalStateException: getOutputStream() has already been called for this response"
 	 * @throws IOException 
 	 * @throws JsonMappingException 

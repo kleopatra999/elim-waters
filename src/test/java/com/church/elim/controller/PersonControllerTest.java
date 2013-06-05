@@ -1,6 +1,7 @@
 package com.church.elim.controller;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Matchers.any;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -10,8 +11,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 import com.church.elim.builders.PersonBuilder;
+import com.church.elim.controller.rest.RestDomainController;
+import com.church.elim.controller.rest.RestPersonController;
 import com.church.elim.matchers.PersonMatcher;
 import com.church.elim.repository.ParishionerRepository;
+import com.church.elim.service.EntityDoesNotExistException;
 import com.church.elim.service.PersonDoesNotExistException;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
@@ -65,10 +69,12 @@ public class PersonControllerTest extends ElimTest{
 		mockMvc = webAppContextSetup(wac).build();
 		ReflectionTestUtils.setField(wac.getBean(PersonController.class), "personService", mockPersonService);
         ReflectionTestUtils.setField(wac.getBean(PersonController.class), "personRepo", mockPersonRepo);
+        ReflectionTestUtils.setField(wac.getBean(RestPersonController.class),
+                "domainService", mockPersonService);
 	}
 	@Test
 	public void testCreatePerson() throws Exception{
-		when(this.mockPersonService.save(popIonel)).thenReturn(popIonel);
+		when(this.mockPersonService.create(any(Person.class))).thenReturn(popIonel);
 		String person = toJSON(popIonel);
 		System.out.println(person);
 		this.mockMvc.perform(post("/persons")
@@ -85,11 +91,11 @@ public class PersonControllerTest extends ElimTest{
     }
     @Test
     public void testDeletePersonNotFound() throws Exception{
-        Mockito.doThrow(new PersonDoesNotExistException((long)2)).when(mockPersonService).remove((long) 2);
+        Mockito.doThrow(new EntityDoesNotExistException("Person", (long)2)).when(mockPersonService).remove((long) 2);
         this.mockMvc.perform(delete("/persons/2")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string(String.format(PersonDoesNotExistException.MESSAGE, 2)));
+                .andExpect(content().string(String.format(EntityDoesNotExistException.MESSAGE, "Person",2)));
     }
     @After
 	public void tearDown(){

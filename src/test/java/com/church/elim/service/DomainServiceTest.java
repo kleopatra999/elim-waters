@@ -22,6 +22,6 @@ public class DomainServiceTest extends ElimTest{
     @Test
     public void testAdd() throws Exception {
         Caregiver caregiver = new Caregiver();
-        service.add(caregiver);//DomainService d = new
+        service.save(caregiver);//DomainService d = new
     }
 }
