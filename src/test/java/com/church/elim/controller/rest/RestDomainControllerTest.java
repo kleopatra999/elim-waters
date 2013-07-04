@@ -117,7 +117,7 @@ public class RestDomainControllerTest extends ElimTest{
                 .andExpect(status().isOk());
     }
     @Test
-    public void testDeletePersonNotFound() throws Exception{
+    public void testDeleteEntityNotFound() throws Exception{
         Mockito.doThrow(new EntityDoesNotExistException(entityName, (long)2)).when(mockCaregiverService).remove((long) 2);
         this.mockMvc.perform(delete(resourceUrl+"/2")
                 .contentType(MediaType.APPLICATION_JSON))
