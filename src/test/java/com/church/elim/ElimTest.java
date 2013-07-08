@@ -52,21 +52,9 @@ import org.springframework.web.context.request.ServletWebRequest;
 @ContextConfiguration(classes={TestDataConfiguration.class})
 public class ElimTest {
     @Autowired
-    protected
-    WebApplicationContext wac;
+    protected WebApplicationContext wac;
     @Autowired
-    MockServletContext servletContext; // cached
-    @Autowired
-    MockHttpSession session;
-    @Autowired
-    MockHttpServletRequest request;
-    @Autowired
-    MockHttpServletResponse response;
-    @Autowired
-    ServletWebRequest webRequest;
-
-    @Autowired
-	ElimMessage messageSource;
+	ElimMessage elimMessage;
 	@Autowired
 	ParishionerRepository parishionerRepo;
 	@Autowired
@@ -136,7 +124,7 @@ public class ElimTest {
 
 	@Test
 	public void testMessageSource(){
-		//assert messageSource.getMessage("parishioner.delete.success", "Pop Ionel").contains("was permanently removed from the database!");
+		//assert elimMessage.getMessage("parishioner.delete.success", "Pop Ionel").contains("was permanently removed from the database!");
 	}
 
 

@@ -57,16 +57,6 @@ public class RestDomainControllerTest extends ElimTest{
     @Autowired
     WebApplicationContext wac;
     @Autowired
-    MockServletContext servletContext; // cached
-    @Autowired
-    MockHttpSession session;
-    @Autowired
-    MockHttpServletRequest request;
-    @Autowired
-    MockHttpServletResponse response;
-    @Autowired
-    ServletWebRequest webRequest;
-    @Autowired
     private PersonController personController;
 
     PersonService mockPersonService = Mockito.mock(PersonService.class);
