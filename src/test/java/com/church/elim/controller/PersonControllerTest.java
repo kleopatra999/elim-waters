@@ -47,11 +47,6 @@ import com.church.elim.utils.ElimMessage;
 @WebAppConfiguration
 public class PersonControllerTest extends ElimTest{
 	@Autowired WebApplicationContext wac;
-	@Autowired MockServletContext servletContext; // cached
-	@Autowired MockHttpSession session;
-	@Autowired MockHttpServletRequest request;
-	@Autowired MockHttpServletResponse response;
-	@Autowired ServletWebRequest webRequest;
 	@Autowired
 	private PersonController personController;
 

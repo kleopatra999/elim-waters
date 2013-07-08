@@ -166,4 +166,8 @@ public class ElimTest {
 		String json = mapper.writeValueAsString(object);
 		return json;
 	}
+
+    public String getResourceUrl(String entityName){
+        return "/" + entityName + "s";
+    }
 }

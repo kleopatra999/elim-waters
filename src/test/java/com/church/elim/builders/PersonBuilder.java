@@ -15,7 +15,7 @@ import static com.church.elim.ElimRandom.newName;
  * Date: 5/15/13
  * Time: 10:43 PM
  */
-public class PersonBuilder {
+public class PersonBuilder implements DomainBuilder<Person>{
     private String firstName = "Pop";
     private String lastName = "Ionel";
     private Long id = (long) 1;
