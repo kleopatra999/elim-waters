@@ -52,7 +52,7 @@ import com.church.elim.utils.ElimMessage;
 import com.church.elim.validation.ParishionerValidator;
 
 @Controller
-public class RESTParishionerController {
+public class RestParishionerController {
 	@Autowired
 	ParishionerRepository parishionerRepo;
 	@Autowired

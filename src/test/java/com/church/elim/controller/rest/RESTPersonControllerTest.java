@@ -40,7 +40,7 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-public class RESTPersonControllerTest extends ElimTest{
+public class RestPersonControllerTest extends ElimTest{
     @Autowired
     private RestPersonController personController;
     PersonService mockPersonService = Mockito.mock(PersonService.class);

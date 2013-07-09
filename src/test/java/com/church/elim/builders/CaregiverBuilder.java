@@ -17,7 +17,7 @@ import static com.church.elim.ElimRandom.newName;
  * Date: 5/15/13
  * Time: 10:43 PM
  */
-public class CaregiverBuilder {
+public class CaregiverBuilder implements DomainBuilder<Caregiver>{
     public static CaregiverBuilder aCaregiver(){
         return new CaregiverBuilder();
     }

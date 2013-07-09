@@ -35,7 +35,7 @@ import com.church.elim.repository.PersonRepository;
 import com.church.elim.service.CustomUserDetailsService;
 import com.church.elim.service.ParishionerService;
 import com.church.elim.utils.ElimMessage;
-public class RESTParishionerControllerTest extends ElimTest{
+public class RestParishionerControllerTest extends ElimTest{
         @Autowired 
         ElimMessage messageSource;
         @Autowired

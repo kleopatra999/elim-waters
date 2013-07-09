@@ -7,6 +7,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.util.ReflectionUtils;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 /**
  * Created with IntelliJ IDEA.
  * User: adi
@@ -14,6 +17,9 @@ import org.springframework.util.ReflectionUtils;
  * Time: 10:34 PM
  */
 public class Entity implements ApplicationContextAware {
+    public static final String DOMAIN_PACKAGE = "com.church.elim.domain";
+    @PersistenceContext
+    private EntityManager em;
     protected String entityName;
     protected Class entityClass;
     private final String resourceUrl;
@@ -64,7 +70,15 @@ public class Entity implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.entityService = (DomainService) applicationContext.getBean(entityName.toLowerCase() + "Service");
-        this.entityController = (RestDomainController) applicationContext.getBean(entityName.toLowerCase() + "Controller");
-        this.entityClass = applicationContext.getBean(entityName.toLowerCase()).getClass();
+        this.entityController = (RestDomainController) applicationContext.getBean("rest" + entityName + "Controller");
+        try {
+            this.entityClass = Class.forName(DOMAIN_PACKAGE + "." + entityName);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void mock(){
+
     }
 }

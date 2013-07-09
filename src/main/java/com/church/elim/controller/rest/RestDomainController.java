@@ -32,6 +32,7 @@ public class RestDomainController<E extends Identifiable> implements Application
     @ResponseBody
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<E> get(@PathVariable Long id) {
+        System.out.println("The id is:" + id);
         return new ResponseEntity<E>(domainService.get(id), HttpStatus.OK);
     }
 

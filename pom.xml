@@ -11,7 +11,7 @@
 		<mockito.version>1.9.5</mockito.version>
 		<json-path.version>0.8.1</json-path.version>
 		<spring-hateoas.version>0.3.0.RELEASE</spring-hateoas.version>
-		<aspectj.version>1.6.12</aspectj.version>
+		<aspectj.version>1.7.0</aspectj.version>
 		<java.version>7</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<slf4j.version>1.6.2</slf4j.version>
