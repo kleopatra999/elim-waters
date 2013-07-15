@@ -200,7 +200,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
-			<scope>test</scope>
+			<!--<scope>test</scope>-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.hateoas</groupId>
@@ -611,7 +611,6 @@
 						<version>${tomcat.version}</version>
 						<configuration>
 							<port>9999</port>
-							<contextReloadable>true</contextReloadable>
 						</configuration>
 						<executions>
 							<execution>
@@ -628,7 +627,7 @@
 								</configuration>
 							</execution>
 							<execution>
-								<phase>${testsPhase}</phase>
+								<!--<phase>${testsPhase}</phase>-->
 								<id>Deploy Elim application in
 								parallel process for qunit tests</id>
 								<goals>
