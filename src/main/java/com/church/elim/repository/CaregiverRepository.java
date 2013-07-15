@@ -17,10 +17,7 @@ public interface CaregiverRepository extends JpaRepository<Caregiver, Long>{
 			"where p.person.firstName=:firstName and p.person.lastName=:lastName")
 	public List<Caregiver> findByFirstNameAndLastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
 	
-	@Query("from Caregiver p " +
-			"where p.person.firstName like :firstName and p.person.lastName like :lastName")
-	public List<Caregiver> findByConditions(@Param("firstName") String firstName, @Param("lastName") String lastName);
-	
+
 	@Modifying
 	@Query("delete from Caregiver p where p.id>:id")
 	public void deleteByIdGreatherThan(@Param("id") Long id);

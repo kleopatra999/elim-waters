@@ -20,7 +20,7 @@ public interface ParishionerRepository extends JpaRepository<Parishioner, Long>{
 	public List<Parishioner> findByFirstNameAndLastName(@Param("firstName") String firstName, @Param("lastName") String lastName);
 	
 	@Query("from Parishioner p " +
-			"where p.firstName like :firstName and p.lastName like :lastName")
+			"where p.firstName = :firstName and p.lastName = :lastName")
 	public List<Parishioner> findByConditions(@Param("firstName") String firstName, @Param("lastName") String lastName);
 	
 	@Modifying

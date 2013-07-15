@@ -18,21 +18,19 @@
 			logout-success-url="/" logout-url="/auth/logout" />
 
 	</security:http>
-    <security:ldap-server url="ldap://localhost:389/dc=securebox,dc=sdl,dc=com" />
+    <security:ldap-server url="ldap://localhost:389/" root="dc=glance,dc=com"
+                          manager-dn="cn=glanceuser,cn=users" manager-password="exod15:27" />
     <!-- Declare an authentication-manager to use a custom userDetailsService -->
 	<!-- security:authentication-manager> <security:authentication-provider> 
 		<security:user-service> <security:user name="guest" password="guest" authorities="ROLE_USER" 
 		/> </security:user-service> </security:authentication-provider> </security:authentication-manager -->
 	<security:authentication-manager>
-		<security:authentication-provider
-			user-service-ref="customUserDetailsService">
-			<security:password-encoder ref="passwordEncoder" />
-		</security:authentication-provider>
+		<!--<security:authentication-provider-->
+			<!--user-service-ref="customUserDetailsService">-->
+		<!--</security:authentication-provider>-->
         <security:ldap-authentication-provider
-                user-dn-pattern="uid={0},cn=users"
                 group-search-base="cn=roles"
-                user-search-filter="(uid={0})"
-                user-search-base="cn=users"/>
+                user-dn-pattern="uid={0},cn=users,dc=glance,dc=com" />
     </security:authentication-manager>
 
 	<!-- Use a Md5 encoder since the user's passwords are stored as Md5 in the 
@@ -43,6 +41,6 @@
 
 	<!-- A custom service where Spring will retrieve users and their corresponding 
 		access levels -->
-	<bean id="customUserDetailsService" class="com.church.elim.service.CustomUserDetailsService" />
+	<!--<bean id="customUserDetailsService" class="com.church.elim.service.CustomUserDetailsService" />-->
 
 </beans>
