@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -42,11 +43,18 @@ public class AuthenticationTest extends ElimTest{
 	@Autowired WebApplicationContext wac;
     @Autowired
     private LdapAuthenticationProvider authenticationProvider;
+    @Autowired
+    @Qualifier("authenticationManager")
+    private AuthenticationManager authenticationManager;
+    @Autowired
+    LdapUserSearch ldapUserSearch;
 	@Test
 	public void testAuth() throws Exception{
-        Authentication authentication = new UsernamePasswordAuthenticationToken( "glanceuser", "exod15:27" );
-        Authentication reponseAuthentication = authenticationProvider.authenticate( authentication );
-	}
+        Authentication authentication = new UsernamePasswordAuthenticationToken( "sboxuser", "Admin123" );
+        //Authentication responseAuthentication = authenticationProvider.authenticate( authentication );
+        authenticationManager.authenticate(authentication);
+
+    }
     @After
 	public void tearDown(){
 	}

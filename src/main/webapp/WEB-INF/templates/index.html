@@ -15,7 +15,8 @@
 <div th:fragment="config">
 	<link rel="stylesheet" th:href="@{/css/jquery-ui-1.8.19.custom.css}"/>
 	<link rel="stylesheet" th:href="@{/css/style.css}"/>
-	<link rel="stylesheet" th:href="@{/css/glance.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/glance.css}"/>
 
 	<script type="text/javascript" th:fragment="requirejsConfig"> 
 		var require = {
@@ -24,7 +25,8 @@
 			paths: { 
 				jquery: "require-jquery",
 				dataTables: "data-tables",
-				ajaxFileUpload: "libs/ajaxfileupload"
+				ajaxFileUpload: "libs/ajaxfileupload",
+                bootstrap:"libs/bootstrap/bootstrap.js"
             }
 		};
 	</script> 
@@ -36,6 +38,7 @@
 	<script th:src="@{/js/libs/angular/angular.min.js}"></script>
 	<script th:src="@{/js/requirejs.js}"></script>
 	<script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/libs/bootstrap/bootstrap.js}"></script>
 </div>
 </head>
 

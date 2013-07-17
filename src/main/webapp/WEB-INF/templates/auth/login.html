@@ -11,17 +11,17 @@
 </head>
 
 <body>
-	<form class="clearfix" id="login-form" th:action="@{/j_spring_security_check}" method="post">
+	<form class="clearfix form-signin" id="login-form" th:action="@{/j_spring_security_check}" method="post">
 		<div id="login-error" th:text="${error}"></div>
 		<p>
 			<label for="j_username" th:text="#{auth_login.username}"></label>
-			<input id="j_username" name="j_username" type="text" />
+			<input id="j_username" class="input-block-level" name="j_username" type="text" />
 		</p>
 		<p>
 			<label for="j_password" th:text="#{auth_login.password}"></label>
 			<input id="j_password" name="j_password" type="password" />
 		</p>
-		<input  type="submit" value="Login"/>        
+		<input  type="submit" class="btn btn-large btn-primary" value="Login"/>
 	</form>
 </body>
 </html>

@@ -75,7 +75,7 @@
         messages such as entity names and menu items. -->
     <bean
             class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
-            id="messageSource2" p:basenames="classpath:/i18n/messages,classpath:/i18n/application"
+            id="messageSource" p:basenames="classpath:/i18n/messages,classpath:/i18n/application"
             p:fallbackToSystemLocale="false"/>
 
     <!-- Store preferred language configuration in a cookie -->
