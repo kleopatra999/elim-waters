@@ -1,24 +1,23 @@
 package com.church.elim.service;
 
-import static org.junit.Assert.*;
-
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.church.elim.ElimTest;
 import com.church.elim.domain.Parishioner;
 import com.church.elim.domain.Person;
 import com.church.elim.repository.ParishionerRepository;
 import com.church.elim.repository.PersonRepository;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.Date;
+import java.util.List;
+
+import static org.junit.Assert.assertNotNull;
+@Ignore
 public class ParishionerServiceTest extends ElimTest{
 	@PersistenceContext
 	EntityManager entityManager;

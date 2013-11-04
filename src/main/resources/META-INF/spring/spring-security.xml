@@ -18,8 +18,8 @@
 			logout-success-url="/" logout-url="/auth/logout" />
 
 	</security:http>
-    <security:ldap-server url="ldap://localhost:389/" root="DC=securebox,DC=sdl,DC=com"
-                          manager-dn="CN=sboxuser,CN=Users,DC=securebox,DC=sdl,DC=com"
+    <security:ldap-server url="ldap://localhost:389/" root="DC=glance,DC=com"
+                          manager-dn="CN=glanceuser,CN=Users,DC=glance,DC=com"
                           manager-password="Admin123" />
     <!-- Use a Md5 encoder since the user's passwords are stored as Md5 in the
 		database -->
@@ -37,8 +37,8 @@
 	<!--<bean id="customUserDetailsService" class="com.church.elim.service.CustomUserDetailsService" />-->
     <bean id="contextSource"
           class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">
-        <constructor-arg value="ldap://localhost:389/DC=securebox,DC=sdl,DC=com"/>
-        <property name="userDn" value="CN=sboxuser,CN=Users,DC=securebox,DC=sdl,DC=com"/>
+        <constructor-arg value="ldap://localhost:389/DC=glance,DC=com"/>
+        <property name="userDn" value="CN=glanceuser,CN=Users,DC=glance,DC=com"/>
         <property name="password" value="Admin123"/>
     </bean>
     <bean id="ldapUserSearch"

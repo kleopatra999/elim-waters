@@ -1,15 +1,15 @@
 package com.church.elim;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-
+import com.church.elim.configuration.TestDataConfiguration;
+import com.church.elim.controller.DataTablesRequest;
+import com.church.elim.repository.ParishionerRepository;
+import com.church.elim.repository.PersonRepository;
+import com.church.elim.service.CustomUserDetailsService;
+import com.church.elim.utils.ElimMessage;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.junit.Test;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,33 +23,27 @@ import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.mock.web.MockHttpSession;
-import org.springframework.mock.web.MockServletContext;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.ResponseExtractor;
 import org.springframework.web.client.RestTemplate;
-
-import com.church.elim.configuration.TestDataConfiguration;
-import com.church.elim.controller.DataTablesRequest;
-import com.church.elim.repository.ParishionerRepository;
-import com.church.elim.repository.PersonRepository;
-import com.church.elim.service.CustomUserDetailsService;
-import com.church.elim.utils.ElimMessage;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.request.ServletWebRequest;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles({"default", "dev"})
 @ContextConfiguration(classes={TestDataConfiguration.class})
+@Ignore
 public class ElimTest {
     @Autowired
     protected WebApplicationContext wac;
@@ -121,12 +115,6 @@ public class ElimTest {
 	public UserDetails getAdminUser(){
 		return userService.loadUserByUsername("admin");
 	}
-
-	@Test
-	public void testMessageSource(){
-		//assert elimMessage.getMessage("parishioner.delete.success", "Pop Ionel").contains("was permanently removed from the database!");
-	}
-
 
 	public RestTemplate getRestTemplate(){
 		RestTemplate restTemplate = new RestTemplate();

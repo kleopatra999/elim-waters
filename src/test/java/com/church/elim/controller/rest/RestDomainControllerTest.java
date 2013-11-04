@@ -2,10 +2,9 @@ package com.church.elim.controller.rest;
 
 import com.church.elim.ElimTest;
 import com.church.elim.builders.ChildrenBuilder;
-import com.church.elim.domain.Caregiver;
 import com.church.elim.domain.EntityHelper;
 import com.church.elim.domain.Identifiable;
-import com.church.elim.service.*;
+import com.church.elim.service.EntityDoesNotExistException;
 import com.church.elim.utils.SpringJUnit4ParameterizedClassRunner;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,13 +25,9 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.when;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 /**

@@ -5,19 +5,13 @@ import static org.mockito.Matchers.any;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 import com.church.elim.builders.PersonBuilder;
-import com.church.elim.controller.rest.RestDomainController;
 import com.church.elim.controller.rest.RestPersonController;
-import com.church.elim.matchers.PersonMatcher;
-import com.church.elim.repository.ParishionerRepository;
 import com.church.elim.service.EntityDoesNotExistException;
-import com.church.elim.service.PersonDoesNotExistException;
-import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,30 +19,24 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.mock.web.MockHttpSession;
-import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.request.ServletWebRequest;
 
 import com.church.elim.ElimTest;
 import com.church.elim.domain.Person;
 import com.church.elim.repository.PersonRepository;
 import com.church.elim.service.CustomUserDetailsService;
 import com.church.elim.service.PersonService;
-import com.church.elim.utils.ElimMessage;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-public class PersonControllerTest extends ElimTest{
+public class ParishionerControllerTest extends ElimTest{
 	@Autowired WebApplicationContext wac;
 	@Autowired
-	private PersonController personController;
+	private ParishionerController parishionerController;
 
 	PersonService mockPersonService = Mockito.mock(PersonService.class);
 	PersonRepository mockPersonRepo = Mockito.mock(PersonRepository.class);
@@ -62,8 +50,8 @@ public class PersonControllerTest extends ElimTest{
 	public void setup() {
         popIonel = new PersonBuilder().buildWithChildren();
 		mockMvc = webAppContextSetup(wac).build();
-		ReflectionTestUtils.setField(wac.getBean(PersonController.class), "personService", mockPersonService);
-        ReflectionTestUtils.setField(wac.getBean(PersonController.class), "personRepo", mockPersonRepo);
+		ReflectionTestUtils.setField(wac.getBean(ParishionerController.class), "personService", mockPersonService);
+        ReflectionTestUtils.setField(wac.getBean(ParishionerController.class), "personRepo", mockPersonRepo);
         ReflectionTestUtils.setField(wac.getBean(RestPersonController.class),
                 "domainService", mockPersonService);
 	}
@@ -76,7 +64,7 @@ public class PersonControllerTest extends ElimTest{
 				.content(person)
 				.contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isCreated())
-		.andExpect(header().string("Location", linkTo(PersonController.class).slash(popIonel.getId()).toUri().toString()));
+		.andExpect(header().string("Location", linkTo(RestPersonController.class).slash(popIonel.getId()).toUri().toString()));
 	}
     @Test
     public void testDeletePerson() throws Exception{

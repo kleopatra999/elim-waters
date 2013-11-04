@@ -18,7 +18,7 @@ public class DataConfiguration {
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setUsername("root");
         dataSource.setPassword("B33f34t3r");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/elim-test1");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/elimtest");
         dataSource.setTestOnBorrow(true);
         dataSource.setTestOnReturn(true);
         dataSource.setTestWhileIdle(true);

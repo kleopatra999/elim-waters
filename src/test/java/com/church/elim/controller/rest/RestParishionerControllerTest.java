@@ -14,6 +14,7 @@ import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,6 +36,7 @@ import com.church.elim.repository.PersonRepository;
 import com.church.elim.service.CustomUserDetailsService;
 import com.church.elim.service.ParishionerService;
 import com.church.elim.utils.ElimMessage;
+@Ignore
 public class RestParishionerControllerTest extends ElimTest{
         @Autowired 
         ElimMessage messageSource;

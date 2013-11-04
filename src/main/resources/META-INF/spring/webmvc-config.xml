@@ -119,6 +119,10 @@
           p:templateEngine-ref="templateEngine">
         <property name="order" value="1"/>
     </bean>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
     <bean id="personValidator" class="com.church.elim.validation.PersonValidator"/>
     <bean id="parishionerValidator" class="com.church.elim.validation.ParishionerValidator">

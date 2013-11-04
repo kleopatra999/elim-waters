@@ -43,8 +43,8 @@ import com.church.elim.service.PersonService;
 @Secured("ROLE_USER")
 @SessionAttributes(value = {"maritalStatus", "studiesList"})
 @Controller
-@RequestMapping("/persons")
-public class PersonController{
+@RequestMapping("/parishioners")
+public class ParishionerController {
     @Autowired
     private PersonRepository personRepo;
     @Autowired
@@ -62,7 +62,7 @@ public class PersonController{
     }
 
     @Secured("ROLE_ADMIN")
-    @RequestMapping(value = "/parishioners/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView addNewMember() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("parishioners/create");
@@ -73,18 +73,7 @@ public class PersonController{
         return modelAndView;
     }
 
-    @RequestMapping(value = "/parishioners/list", params = {"page", "size"}, method = RequestMethod.GET)
-    public ModelAndView listPaginatedResults(@RequestParam("page") int page,
-                                             @RequestParam("size") int size) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("parishioners/list");
-        if (!modelAndView.getModel().containsKey("parishioners")) {
-            modelAndView.addObject("parishioners", parishionerService.findPaginated(page, size));
-        }
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/parishioners/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView showResults() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("parishioners/list");
@@ -93,21 +82,21 @@ public class PersonController{
     }
 
 
-    @RequestMapping(value = "/parishioners/filter", method = RequestMethod.GET)
+    @RequestMapping(value = "/filter", method = RequestMethod.GET)
     public ModelAndView selectFilterCriteria() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("parishioners/filter");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/parishioners/{id}", params = "form", produces = "text/html")
+    @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String updateParishioner(@PathVariable("id") Long id, Model uiModel) {
         uiModel.addAttribute(parishionerRepo.findOne(id));
         return "parishioners/show";
     }
 
 
-    @RequestMapping(value = "/parishioners/{id}", params = "copy", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", params = "copy", method = RequestMethod.GET)
     public String copyMember(@PathVariable("id") Long id, Model uiModel) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("parishioners/create");
@@ -119,7 +108,7 @@ public class PersonController{
         return "redirect:/parishioners/create?id=" + id;
     }
 
-    @RequestMapping(value = "/parishioners/{id}", params = "update", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", params = "update", method = RequestMethod.GET)
     public ModelAndView updateMember(@PathVariable("id") Long id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("parishioners/update");
@@ -132,7 +121,7 @@ public class PersonController{
         return modelAndView;
     }
 
-    @RequestMapping(value = "/parishioners/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@Valid @ModelAttribute("parishioner") Parishioner parishioner, @RequestParam("photo") MultipartFile photo, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
 
         if (bindingResult.hasErrors()) {
@@ -156,7 +145,7 @@ public class PersonController{
         return parishionerService.getEducationList();
     }
 
-    @RequestMapping(value = "/parishioners/import", params = "excel", method = RequestMethod.GET)
+    @RequestMapping(value = "/import", params = "excel", method = RequestMethod.GET)
     public ModelAndView importFromExcel() throws IOException {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");

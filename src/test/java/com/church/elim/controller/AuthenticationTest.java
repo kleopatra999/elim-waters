@@ -11,6 +11,7 @@ import com.church.elim.service.PersonService;
 import org.exolab.castor.mapping.xml.Ldap;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -21,6 +22,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.ldap.authentication.LdapAuthenticationProvider;
 import org.springframework.security.ldap.search.LdapUserSearch;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -29,6 +31,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
@@ -48,12 +51,22 @@ public class AuthenticationTest extends ElimTest{
     private AuthenticationManager authenticationManager;
     @Autowired
     LdapUserSearch ldapUserSearch;
-	@Test
-	public void testAuth() throws Exception{
-        Authentication authentication = new UsernamePasswordAuthenticationToken( "sboxuser", "Admin123" );
+    @Test
+    public void testAuth() throws Exception{
+        Authentication authentication = new UsernamePasswordAuthenticationToken( "glanceuser", "Admin123" );
         //Authentication responseAuthentication = authenticationProvider.authenticate( authentication );
-        authenticationManager.authenticate(authentication);
-
+        System.out.println(ldapUserSearch.searchForUser("glanceuser"));
+        Authentication auth = authenticationManager.authenticate(authentication);
+        for(String requiredAuth: new String[]{"ROLE_ADMIN","ROLE_USER"}){
+            boolean found = false;
+            for(GrantedAuthority authority:auth.getAuthorities()){
+                if (authority.getAuthority().equals(requiredAuth)){
+                    found = true;
+                }
+            }
+            assertTrue("User does not have required authority " + requiredAuth,found);
+        }
+        System.out.println("end");
     }
     @After
 	public void tearDown(){

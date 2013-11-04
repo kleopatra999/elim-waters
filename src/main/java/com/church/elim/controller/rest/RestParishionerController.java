@@ -50,6 +50,7 @@ import com.church.elim.service.DownloadService;
 import com.church.elim.service.ParishionerService;
 import com.church.elim.utils.ElimMessage;
 import com.church.elim.validation.ParishionerValidator;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RestParishionerController {
@@ -136,7 +137,18 @@ public class RestParishionerController {
 		return "parishioners/names-datalist";
 	}
 
-	@Secured("ROLE_ADMIN")
+    @RequestMapping(value = "/parishioners/list", params = {"page", "size"}, method = RequestMethod.GET)
+    public ModelAndView listPaginatedResults(@RequestParam("page") int page,
+                                             @RequestParam("size") int size) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("parishioners/list");
+        if (!modelAndView.getModel().containsKey("parishioners")) {
+            modelAndView.addObject("parishioners", parishionerService.findPaginated(page, size));
+        }
+        return modelAndView;
+    }
+
+    @Secured("ROLE_ADMIN")
 	@RequestMapping(method=RequestMethod.POST, 
 	value="/rest/parishioners/delete/{id}",
 	produces="text/html")
