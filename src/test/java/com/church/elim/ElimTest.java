@@ -1,7 +1,7 @@
 package com.church.elim;
 
 import com.church.elim.configuration.TestDataConfiguration;
-import com.church.elim.controller.DataTablesRequest;
+import com.church.elim.web.controller.DataTablesRequest;
 import com.church.elim.repository.ParishionerRepository;
 import com.church.elim.repository.PersonRepository;
 import com.church.elim.service.CustomUserDetailsService;

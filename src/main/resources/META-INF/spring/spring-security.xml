@@ -18,50 +18,13 @@
 			logout-success-url="/" logout-url="/auth/logout" />
 
 	</security:http>
-    <security:ldap-server url="ldap://localhost:389/" root="DC=glance,DC=com"
-                          manager-dn="CN=glanceuser,CN=Users,DC=glance,DC=com"
-                          manager-password="Admin123" />
-    <!-- Use a Md5 encoder since the user's passwords are stored as Md5 in the
-		database -->
-	<bean
-		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"
-		id="passwordEncoder" />
-    <security:authentication-manager alias="authenticationManager">
-        <!--<security:authentication-provider-->
-        <!--user-service-ref="customUserDetailsService">-->
-        <security:authentication-provider ref="ldapAuthProvider"/>
+
+	<security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="admin" password="admin" authorities="ROLE_ADMIN,ROLE_USER" />
+            </security:user-service>
+        </security:authentication-provider>
     </security:authentication-manager>
 
-	<!-- A custom service where Spring will retrieve users and their corresponding 
-		access levels -->
-	<!--<bean id="customUserDetailsService" class="com.church.elim.service.CustomUserDetailsService" />-->
-    <bean id="contextSource"
-          class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">
-        <constructor-arg value="ldap://localhost:389/DC=glance,DC=com"/>
-        <property name="userDn" value="CN=glanceuser,CN=Users,DC=glance,DC=com"/>
-        <property name="password" value="Admin123"/>
-    </bean>
-    <bean id="ldapUserSearch"
-          class="org.springframework.security.ldap.search.FilterBasedLdapUserSearch">
-        <constructor-arg index="0" value="cn=users"/>
-        <constructor-arg index="1" value="(uid={0})"/>
-        <constructor-arg index="2" ref="contextSource"/>
-    </bean>
-    <bean id="ldapAuthProvider"
-          class="org.springframework.security.ldap.authentication.LdapAuthenticationProvider">
-        <constructor-arg>
-            <bean class="org.springframework.security.ldap.authentication.BindAuthenticator">
-                <constructor-arg ref="contextSource"/>
-                <property name="userSearch" ref="ldapUserSearch"/>
-            </bean>
-        </constructor-arg>
-        <constructor-arg>
-            <bean
-                    class="org.springframework.security.ldap.userdetails.DefaultLdapAuthoritiesPopulator">
-                <constructor-arg ref="contextSource"/>
-                <constructor-arg value="cn=roles"/>
-                <property name="groupRoleAttribute" value="cn"/>
-            </bean>
-        </constructor-arg>
-    </bean>
 </beans>

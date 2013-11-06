@@ -1,19 +1,14 @@
 package com.church.elim.domain;
 
 import com.church.elim.builders.DomainBuilder;
-import com.church.elim.controller.rest.RestCaregiverController;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.web.context.WebApplicationContext;
 
-import static org.mockito.Matchers.anyLong;
 import static org.mockito.Mockito.when;
 
 /**

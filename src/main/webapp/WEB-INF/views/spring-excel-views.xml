@@ -1,2 +1,2 @@
-<bean id="ExcelRevenueSummary" class="com.church.elim.controller.ExcelReport">
+<bean id="ExcelRevenueSummary" class="com.church.elim.web.controller.ExcelReport">
 </bean>

@@ -7,7 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.church.elim.controller.rest.ChildrenAlreadyExistsException;
+import com.church.elim.web.controller.rest.ChildrenAlreadyExistsException;
 import org.apache.commons.lang.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

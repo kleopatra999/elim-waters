@@ -33,7 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.church.elim.controller.DataTablesRequest;
+import com.church.elim.web.controller.DataTablesRequest;
 import com.church.elim.domain.Parishioner;
 import com.church.elim.domain.Education;
 import com.church.elim.domain.MaritalStatus;

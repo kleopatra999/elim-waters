@@ -34,7 +34,7 @@
 	<div id="container">
 		<h1>Edit Parishioner details</h1>
 		<div id="parishioner-update-form">
-			<form action="list.html" th:object="${parishioner}"
+			<form action="list1.html" th:object="${parishioner}"
 				th:action="@{/parishioners/update}" method="post">
 				<div id="errors" th:if="${#fields.hasErrors('*')}">
 					<ul>

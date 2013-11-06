@@ -28,11 +28,13 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 					throw new UnsupportedOperationException(); 
 				} 
 			}); 
-			Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); 
-			WebSecurityExpressionRoot sec = new WebSecurityExpressionRoot(authentication, filterInvocation); 
-			sec.setTrustResolver(new AuthenticationTrustResolverImpl()); 
-			modelAndView.getModel().put("sec", sec); 
-		} 
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            if(authentication != null){
+                WebSecurityExpressionRoot sec = new WebSecurityExpressionRoot(authentication, filterInvocation);
+                sec.setTrustResolver(new AuthenticationTrustResolverImpl());
+                modelAndView.getModel().put("sec", sec);
+            }
+		}
 	} 
 
 } 

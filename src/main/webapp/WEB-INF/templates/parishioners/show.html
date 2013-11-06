@@ -53,7 +53,7 @@
                                 th:src="@{/img/update.png}" th:title="#{message_list.button.edit}" th:alt="#{message_list.button.edit}"/></a>
                     </td>
                     <td>
-                        <form action="list.html" th:action="@{'/messageforms/' + ${row.id}}" method="post">
+                        <form action="list1.html" th:action="@{'/messageforms/' + ${row.id}}" method="post">
                             <input type="hidden" name="_method" value="DELETE" />
                             <input type="hidden" name="page" value="1" />
                             <input type="hidden" name="size" value="10" />
@@ -66,7 +66,7 @@
         </table>
         <a class="button btnSmall" href="../index.html" th:href="@{/}" th:text="#{message_list.button.home}">Home</a>
         <a class="button btnSmall" href="create.html" th:href="@{'/messageforms?form'}" th:text="#{message_list.button.new}">New</a>
-        <a class="button btnSmall" href="list.html" th:href="@{'/messageforms?page=1&amp;size=10'}" th:text="#{message_list.button.list}">List</a>
+        <a class="button btnSmall" href="list1.html" th:href="@{'/messageforms?page=1&amp;size=10'}" th:text="#{message_list.button.list}">List</a>
         
 		<footer>
             <hr />
