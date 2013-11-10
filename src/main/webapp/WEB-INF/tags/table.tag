@@ -7,15 +7,6 @@
     <!-- table-heading -->
     <thead class="table-heading">
         <tr>
-            <th class="checkbox">
-                <form action="#">
-                    <fieldset>
-                        <input type="checkbox" class="checkbox"/>
-                        <input type="submit" class="btn-send hidden"/>
-                    </fieldset>
-                </form>
-            </th>
-
             <th class="number">
                 <a class="header" href="#">Project #</a>
             </th>
@@ -44,12 +35,14 @@
         </c:forEach>
     </tbody>
 </table>
-<ul class="pagination">
+<div class="pagination pagination-sm">
+<ul>
     <li><a href="#">&laquo;</a></li>
-    <li><a href="#">1</a></li>
+    <li class="active"><a href="#">1</a></li>
     <li><a href="#">2</a></li>
     <li><a href="#">3</a></li>
     <li><a href="#">4</a></li>
     <li><a href="#">5</a></li>
     <li><a href="#">&raquo;</a></li>
 </ul>
+</div>
