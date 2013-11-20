@@ -11,7 +11,7 @@ function DataTable(table, options, searchForm, viewForm) {
             columns: this.getColumns()
         },
         search: ''
-    }
+    };
     this.searchForm = searchForm;
     this.viewForm = viewForm;
     $('.table-heading th a', table).on('click', function () {
@@ -30,7 +30,7 @@ function DataTable(table, options, searchForm, viewForm) {
             e.preventDefault();
         });
         $('input[name="search"]', searchForm).keypress(function (e) {
-            if (e.which == 13) {
+            if (e.which === 13) {
                 inst.setSearch($(this).val());
             }
         });
@@ -47,17 +47,17 @@ DataTable.prototype.sort = function (header) {
         $(this).removeClass('headerSortDown');
     });
     header.addClass(sortAsc ? 'headerSortUp' : 'headerSortDown');
-}
+};
 
 DataTable.prototype.setView = function (viewName) {
     this.tableData.view.name = viewName;
     this.updateTable();
-}
+};
 
 DataTable.prototype.setSearch = function (searchText) {
     this.tableData.search = searchText;
     this.updateTable();
-}
+};
 
 DataTable.prototype.getColumns = function () {
     var columns = [];
@@ -67,7 +67,7 @@ DataTable.prototype.getColumns = function () {
         });
     });
     return columns;
-}
+};
 
 DataTable.prototype.updateTable = function () {
     var table = this.table;
@@ -81,7 +81,7 @@ DataTable.prototype.updateTable = function () {
             $(table).html(data);
         }
     });
-}
+};
 
 $.fn.dataTable = function (options, searchForm, viewForm) {
     return new DataTable(this, options, searchForm, viewForm);
