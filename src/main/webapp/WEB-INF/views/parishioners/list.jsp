@@ -4,7 +4,9 @@
 <html>
 <t:pageTemplate>
     <jsp:attribute name="head">
-        <link href="<c:url value="/css/elim/tables.css"/>" media="screen" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="<c:url value="/js/controls/RichTableModel.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/parishioner/list.js"/>"></script>
+<link href="<c:url value="/css/elim/tables.css"/>" media="screen" rel="stylesheet" type="text/css">
     </jsp:attribute>
     <jsp:attribute name="content">
         <t:table columns="${table.columns}" records="${table.records}">

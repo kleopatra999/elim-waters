@@ -30,12 +30,13 @@ Released   : 20130920
           type="text/css">
     <link href="<c:url value="/css/default.css"/>" media="screen" rel="stylesheet" type="text/css" media="all">
     <link href="<c:url value="/css/fonts.css"/>" media="screen" rel="stylesheet" type="text/css" media="all">
-    <script type="text/javascript" src="<c:url value="/js/libs/jquery-1.7.2.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/libs/jquery-2.0.3.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/libs/jquery-ui-1.8.19.custom.min.js"/>"></script>
-    <script type="text/javascript" src="<c:url value="/js/libs/modernizr-2.0.6.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/libs/modernizr-latest.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/libs/jquery.i18n.properties-min-1.0.9.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/libs/jquery.validate.min.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/js/libs/bootstrap/bootstrap.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/js/libs/knockout-3.0.0.js"/>"></script>
     <jsp:invoke fragment="head"/>
 </head>
 
